@@ -38,31 +38,17 @@ Because this project is built with Vanilla HTML, CSS, and JS, there is no comple
 2.  **Open the application:**
     Simply open the `index.html` file in any modern web browser (Chrome, Edge, Firefox, Safari).
 
-### Default Credentials
-
-To get started immediately, use the following default credentials:
-
-**Admin Access:**
-* **Username:** `admin`
-* **Password:** `AdminDIU@2026`
-
-**Demo Student Access:**
-* **Student ID:** `252-15-900`
-* **Password:** `diustudent`
-
-*(Note: Admin credentials can be changed in the "Admin Settings" tab inside the dashboard).*
+*Note: Administrator access is strictly controlled. New students must request access via the login screen and await admin approval before gaining entry to the dashboard.*
 
 ---
 
 ## 📸 Screenshots
 
-*(Add screenshots of your project here to make the README visually appealing)*
-
 | Admin Dashboard | Student Mobile View | Desktop Portal Mockup |
 | :---: | :---: | :---: |
 | <img src="assets/admin-view.png" width="250" alt="Admin View"> | <img src="assets/mobile-view.png" width="200" alt="Mobile View"> | <img src="assets/desktop-view.png" width="300" alt="Desktop View"> |
 
-*(Create an `assets` folder, upload your screenshots, and update the paths above).*
+*(Make sure to upload your screenshots to an `assets` folder in your repo to make these images visible).*
 
 ---
 
@@ -77,7 +63,7 @@ To get started immediately, use the following default credentials:
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! 
-If you have ideas to improve the UI or add new features (like automated routine generation or dark mode for the portal preview), feel free to fork this repository and submit a pull request.
+If you have ideas to improve the UI or add new features, feel free to fork this repository and submit a pull request.
 
 ---
 
