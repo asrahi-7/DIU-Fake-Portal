@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DIU Portal Generator & System</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 /* ─── RESET ─────────────────────────────────── */
@@ -444,7 +448,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <p id="adm-page-sub">Customize logo, navigation, and branding</p>
       </div>
       <div class="adm-topbar-actions">
-        <button class="btn-secondary" onclick="resetDefaults()">↺ Factory Reset</button>
         <button class="btn-primary" onclick="applyAndGen()">⚡ Apply Changes</button>
       </div>
     </div>
@@ -594,7 +597,23 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 
 <script>
 /* ─────────────────────────────────────────────
-   DATABASE & STATE
+   1. INITIALIZE FIREBASE (Using your exact Config)
+───────────────────────────────────────────── */
+const firebaseConfig = {
+  apiKey: "AIzaSyD6B_6obS8XAgUcUCn-L2yqx5dQc7PiglQ",
+  authDomain: "diu-fakeportal-db.firebaseapp.com",
+  projectId: "diu-fakeportal-db",
+  storageBucket: "diu-fakeportal-db.firebasestorage.app",
+  messagingSenderId: "330443342677",
+  appId: "1:330443342677:web:7078748cfadaed2b79e5dc"
+};
+
+// Initialize Firebase using the Compat Library
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+/* ─────────────────────────────────────────────
+   2. STATE & DEFAULT DATA
 ───────────────────────────────────────────── */
 const DEFAULT_STUDENT = {
   name: 'Demo Student', id: 'XXX-XX-XXX', pass: 'demo123', status: 'approved',
@@ -624,10 +643,39 @@ let isStudentLoginMode = true;
 let editingStudentId = null; 
 let loggedInStudent = null; 
 
-function saveCFG(){ try{ localStorage.setItem('diusys_cfg',JSON.stringify(CFG)); }catch(e){} }
-function loadCFG(){ try{ const s=localStorage.getItem('diusys_cfg'); if(s) CFG=Object.assign({},CFG,JSON.parse(s)); }catch(e){} }
+/* ─────────────────────────────────────────────
+   3. FIREBASE CLOUD SAVE & LOAD FUNCTIONS
+───────────────────────────────────────────── */
+// Save all data to the "main" document in the "portalData" collection
+function saveCFG(){ 
+  if(!db) return;
+  db.collection("portalData").doc("main").set(CFG)
+    .then(() => { console.log("Saved safely to Firebase!"); })
+    .catch((error) => { console.error("Error saving to Firebase: ", error); });
+}
 
-/* Session Management */
+// Load all data from the Firebase cloud when the page opens
+function loadCFG(callback){ 
+  if(!db) return;
+  db.collection("portalData").doc("main").get().then((doc) => {
+    if (doc.exists) {
+      // Overwrite the local CFG object with the live cloud data
+      CFG = Object.assign({}, CFG, doc.data());
+      console.log("Loaded data from Firebase!");
+    } else {
+      // If it's the very first time, save the default layout to the cloud
+      saveCFG();
+    }
+    if(callback) callback();
+  }).catch((error) => {
+    console.log("Error loading cloud data, using defaults:", error);
+    if(callback) callback();
+  });
+}
+
+/* ─────────────────────────────────────────────
+   4. SESSION MANAGEMENT (Local to the device)
+───────────────────────────────────────────── */
 function saveSession(type, id) { localStorage.setItem('diusys_session', JSON.stringify({type, id})); }
 function clearSession() { localStorage.removeItem('diusys_session'); }
 function checkSession() {
@@ -660,10 +708,9 @@ function updateClock() {
   const time = now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
   clocks.forEach(c => c.textContent = time);
 }
-setInterval(updateClock, 1000);
 
 /* ─────────────────────────────────────────────
-   LOGIN LOGIC
+   5. LOGIN LOGIC
 ───────────────────────────────────────────── */
 function showMsg(id, txt, type){ const el=document.getElementById(id); el.className=`login-msg ${type} show`; el.textContent=txt; }
 
@@ -710,7 +757,8 @@ function submitRequest(){
   
   const ns = JSON.parse(JSON.stringify(DEFAULT_STUDENT));
   ns.name=name; ns.id=sid; ns.pass=pass; ns.status='pending';
-  CFG.students.push(ns); saveCFG();
+  CFG.students.push(ns); 
+  saveCFG(); // Immediately push request to Firebase cloud
   
   toggleRequestMode(); showMsg('login-msg', 'Request sent! Waiting for admin approval.', 'succ');
   document.getElementById('r-name').value=''; document.getElementById('r-sid').value=''; document.getElementById('r-pass').value='';
@@ -730,14 +778,11 @@ function doAdminLogin(){
 function doLogout(){
   clearSession();
   loggedInStudent = null;
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('pg-login').classList.add('active');
-  document.getElementById('l-pass').value=''; document.getElementById('l-spass').value='';
-  document.getElementById('login-msg').classList.remove('show');
+  location.reload(); // Reload to clear memory and fetch fresh cloud data for next user
 }
 
 /* ─────────────────────────────────────────────
-   STUDENT DASHBOARD (GENERATOR)
+   6. STUDENT DASHBOARD (GENERATOR)
 ───────────────────────────────────────────── */
 function initStudentDashboard(){
   document.getElementById('my-name-disp').textContent = loggedInStudent.name;
@@ -784,7 +829,10 @@ function saveMyStudentData(){
   }));
   
   const idx = CFG.students.findIndex(s=>s.id === loggedInStudent.id);
-  if(idx !== -1) { CFG.students[idx] = loggedInStudent; saveCFG(); }
+  if(idx !== -1) { 
+    CFG.students[idx] = loggedInStudent; 
+    saveCFG(); // PUSH EDITS TO FIREBASE
+  }
   
   genMyPreview();
   const t = document.getElementById('my-save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
@@ -805,7 +853,7 @@ function genMyPreview(){
 }
 
 /* ─────────────────────────────────────────────
-   ADMIN SYSTEM
+   7. ADMIN SYSTEM
 ───────────────────────────────────────────── */
 function initAdmin(){
   document.getElementById('cfg-uni1').value=CFG.uni1; document.getElementById('cfg-uni2').value=CFG.uni2; document.getElementById('cfg-uni3').value=CFG.uni3;
@@ -868,9 +916,6 @@ function liveUpdateAdminStudent() {
   tempStu.pay=document.getElementById('se-pay').value; tempStu.paid=document.getElementById('se-paid').value; 
   tempStu.due=document.getElementById('se-due').value; tempStu.oth=document.getElementById('se-oth').value;
   tempStu.sems=[1,2,3].map(i=>({n:document.getElementById(`se-s${i}n`).value, v:parseFloat(document.getElementById(`se-s${i}v`).value)||0}));
-  
-  // If we are looking at the student panel preview
-  // (In this layout, we don't have a live preview next to the student list, so this just prepares data if we add one later)
 }
 
 function createNewStudent(){
@@ -883,11 +928,20 @@ function saveCurrentStudent(){
   stu.name=document.getElementById('se-name').value; stu.pass=document.getElementById('se-pass').value; stu.pay=document.getElementById('se-pay').value;
   stu.paid=document.getElementById('se-paid').value; stu.due=document.getElementById('se-due').value; stu.oth=document.getElementById('se-oth').value;
   stu.sems=[1,2,3].map(i=>({n:document.getElementById(`se-s${i}n`).value, v:parseFloat(document.getElementById(`se-s${i}v`).value)||0}));
-  saveCFG(); renderAdminStudentList(); 
+  
+  saveCFG(); // PUSH EDITS TO FIREBASE
+  renderAdminStudentList(); 
   const t=document.getElementById('adm-save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-function approveCurrentStudent(){ const stu = CFG.students.find(s=>s.id===editingStudentId); if(stu){ stu.status = 'approved'; saveCurrentStudent(); loadStudentEditor(stu.id); } }
+function approveCurrentStudent(){ 
+  const stu = CFG.students.find(s=>s.id===editingStudentId); 
+  if(stu){ 
+    stu.status = 'approved'; 
+    saveCurrentStudent(); 
+    loadStudentEditor(stu.id); 
+  } 
+}
 
 function deleteCurrentStudent(){
   if(confirm('Delete this student profile entirely?')){
@@ -904,7 +958,9 @@ function changeAdminCreds(){
   msg.style.display='block';
   if(cp !== CFG.admin.password) { msg.style.color='#f87171'; msg.textContent='Current password wrong.'; return; }
   if(nu) CFG.admin.username=nu; if(np.length>=4) CFG.admin.password=np;
-  saveCFG(); document.getElementById('adm-username').textContent=CFG.admin.username; msg.style.color='#4ade80'; msg.textContent='Saved.';
+  
+  saveCFG(); // PUSH CREDENTIALS TO FIREBASE
+  document.getElementById('adm-username').textContent=CFG.admin.username; msg.style.color='#4ade80'; msg.textContent='Saved.';
 }
 
 function applyAndGen(){
@@ -917,7 +973,9 @@ function applyAndGen(){
   CFG.announce.text = document.getElementById('cfg-announce').value;
 
   CFG.nav=[]; document.querySelectorAll('.nav-item-row').forEach(r=>CFG.nav.push({label:r.querySelector('input').value, chevron:r.querySelector('.chev-toggle').classList.contains('on')}));
-  saveCFG(); genPreview(); const t=document.getElementById('save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
+  
+  saveCFG(); // PUSH BRANDING TO FIREBASE
+  genPreview(); const t=document.getElementById('save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
 }
 
 function setPM(m){ previewMode=m; document.getElementById('pmb-desk').classList.toggle('on',m==='desktop'); document.getElementById('pmb-mob').classList.toggle('on',m==='mobile'); genPreview(); }
@@ -930,7 +988,7 @@ function genPreview(){
 }
 
 /* ─────────────────────────────────────────────
-   PORTAL RENDER HTML GENERATORS (Shared)
+   8. PORTAL HTML RENDER GENERATORS
 ───────────────────────────────────────────── */
 const DC=['#a5d6b4','#cce6a9','#8d80d2']; const MC=['#f081a3','#8ca9e2','#76678a'];
 function getIcon(i){ const NAV_ICONS=[`<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>`,`<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`]; return NAV_ICONS[i%NAV_ICONS.length]; }
@@ -1019,7 +1077,7 @@ function getMobileHTML(cfg, stu) {
 }
 
 /* ─────────────────────────────────────────────
-   UTILS (Nav Editor, Logo, Screenshot)
+   9. MISC UI FUNCTIONS
 ───────────────────────────────────────────── */
 function handleLogoUpload(evt){ const f=evt.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=e=>{CFG.logoSrc=e.target.result; document.getElementById('logo-preview-img').src=CFG.logoSrc; document.getElementById('logo-preview-img').style.display='block'; document.getElementById('logo-placeholder').style.display='none'; applyAndGen();}; r.readAsDataURL(f); }
 function renderNavEditor(){ const ed=document.getElementById('nav-editor'); ed.innerHTML=''; CFG.nav.forEach((item,i)=>{ const row=document.createElement('div'); row.className='nav-item-row'; row.innerHTML=`<span class="drag-handle">⠿</span><input type="text" value="${escHtml(item.label)}"><button class="chev-toggle${item.chevron?' on':''}" onclick="this.classList.toggle('on')">›</button><button class="del-btn" onclick="CFG.nav.splice(${i},1);renderNavEditor()">✕</button>`; ed.appendChild(row); }); }
@@ -1043,9 +1101,17 @@ async function downloadScreenshot(targetId){
   }
 }
 
+/* ─────────────────────────────────────────────
+   10. BOOT SEQUENCE
+───────────────────────────────────────────── */
 window.onload = function(){ 
-  loadCFG(); 
-  checkSession();
+  // Load data from Firebase, THEN check if user is logged in
+  loadCFG(() => {
+    checkSession();
+  });
+  
+  // Start the ticking clock
+  setInterval(updateClock, 1000);
 };
 </script>
 </body>
