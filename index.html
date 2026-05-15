@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="color-scheme" content="light only">
-<title>DIU Portal System | Professional Management</title>
+<title>AuraGrade | The Ultimate CGPA Prank Generator</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
@@ -25,29 +25,21 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 }
 
 /* ══════════════════════════════════════════════
-   HOME PAGE (PROFESSIONAL LANDING)
+   HOME PAGE (AURAGRADE LANDING)
 ══════════════════════════════════════════════ */
-/* FIX: Removed 'display: block' so it hides correctly when not active */
-#pg-home {
-  flex-direction: column;
-  height: 100vh;
-  overflow-y: auto;
-  background: #0d0d1a;
-  position: relative;
-}
+#pg-home { flex-direction: column; height: 100vh; overflow-y: auto; background: #0d0d1a; position: relative; }
 #pg-home::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse 800px 600px at 50% 0%, rgba(74,108,247,0.15) 0%, transparent 80%);
 }
 
-/* Sticky Navbar */
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(13, 13, 26, 0.85); backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
   padding: 16px 5%; display: flex; justify-content: space-between; align-items: center;
 }
-.site-logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; cursor:pointer;}
+.site-logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.3rem; color: #fff; text-decoration: none; cursor:pointer;}
 .site-logo svg { width: 32px; height: 32px; }
 .site-nav { display: flex; gap: 24px; align-items: center; }
 .site-nav a { color: #8b92a5; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; cursor:pointer;}
@@ -55,25 +47,23 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .btn-nav-login { background: #4a6cf7; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: 0.2s; border:none; cursor:pointer;}
 .btn-nav-login:hover { background: #3a5ce6; transform: translateY(-1px); }
 
-/* Hero Section */
 .hero { padding: 100px 5% 80px; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .hero-badge {
   background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); color: #4ade80;
   padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;
 }
-.hero h1 { font-size: 4rem; font-weight: 800; color: #fff; margin-bottom: 24px; line-height: 1.15; max-width: 900px; }
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #fff; margin-bottom: 24px; line-height: 1.15; max-width: 900px; }
 .hero h1 span { color: #4a6cf7; }
 .hero p { font-size: 1.15rem; color: #8b92a5; margin-bottom: 40px; max-width: 600px; line-height: 1.6; }
-.hero-buttons { display: flex; gap: 16px; justify-content: center; }
-.btn-hero-primary { background: #4a6cf7; color: #fff; padding: 16px 36px; border-radius: 12px; font-size: 1.05rem; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 10px 20px rgba(74,108,247,0.3); }
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; width: 100%; }
+.btn-hero-primary { background: #4a6cf7; color: #fff; padding: 16px 32px; border-radius: 12px; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 10px 20px rgba(74,108,247,0.3); }
 .btn-hero-primary:hover { background: #3a5ce6; transform: translateY(-2px); box-shadow: 0 15px 25px rgba(74,108,247,0.4); }
-.btn-hero-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 16px 36px; border-radius: 12px; font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.btn-hero-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 16px 32px; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
 .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); }
 
-/* Features Section */
 .features { padding: 80px 5%; background: #0a0a18; border-top: 1px solid #1a1a30; }
 .features-header { text-align: center; margin-bottom: 50px; }
-.features-header h2 { font-size: 2.5rem; color: #fff; margin-bottom: 16px; font-weight: 800; }
+.features-header h2 { font-size: clamp(2rem, 4vw, 2.5rem); color: #fff; margin-bottom: 16px; font-weight: 800; }
 .features-header p { color: #8b92a5; font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
 .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
 .feature-card { background: #12121f; border: 1px solid #1e1e35; border-radius: 16px; padding: 32px; transition: 0.3s; }
@@ -82,22 +72,14 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .feature-card h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; }
 .feature-card p { color: #8b92a5; font-size: 0.9rem; line-height: 1.6; }
 
-/* Footer */
 .site-footer { background: #07070f; border-top: 1px solid #1a1a30; padding: 40px 5%; text-align: center; color: #5a5a8a; font-size: 0.85rem; }
 
 /* ══════════════════════════════════════════════
    LOGIN PAGE
 ══════════════════════════════════════════════ */
-#pg-login{
-  min-height:100vh; align-items:center;justify-content:center; flex-direction: column;
-  background:linear-gradient(135deg,#0d0d1a 0%,#1a1a3e 50%,#0d0d1a 100%);
-  position:relative;overflow:hidden;
-}
-#pg-login::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 800px 600px at 60% 40%,rgba(74,108,247,0.12) 0%,transparent 70%);
-}
-.login-box{ background:#12121f;border:1px solid #252545;border-radius:20px; padding:44px 40px;width:400px;position:relative;z-index:1; box-shadow:0 30px 80px rgba(0,0,0,0.6); }
+#pg-login{ min-height:100vh; align-items:center;justify-content:center; flex-direction:column; background:linear-gradient(135deg,#0d0d1a 0%,#1a1a3e 50%,#0d0d1a 100%); position:relative;overflow:hidden; padding: 20px; }
+#pg-login::before{ content:'';position:absolute;inset:0; background:radial-gradient(ellipse 800px 600px at 60% 40%,rgba(74,108,247,0.12) 0%,transparent 70%); }
+.login-box{ background:#12121f;border:1px solid #252545;border-radius:20px; padding:40px; width:100%; max-width:400px; position:relative;z-index:1; box-shadow:0 30px 80px rgba(0,0,0,0.6); }
 .login-logo{ display:flex;align-items:center;gap:14px;margin-bottom:28px; padding-bottom:24px;border-bottom:1px solid #1e1e35; cursor:pointer; transition: opacity 0.2s; }
 .login-logo:hover{ opacity: 0.8; }
 .login-logo-icon{ width:52px;height:52px;background:#1a237e;border-radius:12px; display:flex;align-items:center;justify-content:center; }
@@ -117,15 +99,13 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .login-msg.succ{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80;}
 .login-msg.warn{background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.3);color:#facc15;}
 .login-msg.show{display:block;}
-.btn-login{ width:100%;padding:12px;background:#4a6cf7;border:none;border-radius:10px; color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit; margin-top:8px;transition:background 0.2s,transform 0.1s; }
-.btn-login:hover{background:#3a5ce6;transform:translateY(-1px);}
-.btn-text{ width:100%;padding:10px;background:transparent;border:none; color:#7a9cf7;font-size:0.75rem;font-weight:600;cursor:pointer; margin-top:4px;transition:color 0.2s; }
-.btn-text:hover{color:#a8c0ff;}
+.btn-login{ width:100%;padding:12px;background:#4a6cf7;border:none;border-radius:10px; color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer; margin-top:8px;}
+.btn-text{ width:100%;padding:10px;background:transparent;border:none; color:#7a9cf7;font-size:0.75rem;font-weight:600;cursor:pointer; margin-top:4px; }
 .support-link{text-align:center;font-size:0.7rem;color:#555;margin-top:20px;padding-top:16px;border-top:1px solid #1e1e35;}
 .support-link a{color:#4a6cf7;text-decoration:none;font-weight:600;}
 
 /* ══════════════════════════════════════════════
-   ADMIN & STUDENT SHELL (Shared Layout)
+   ADMIN & STUDENT DASHBOARDS (SHARED)
 ══════════════════════════════════════════════ */
 .adm-sidebar{ width:240px;min-width:240px;background:#0a0a18;border-right:1px solid #1a1a30; display:flex;flex-direction:column;position:sticky;top:0;height:100vh; }
 .adm-brand{padding:20px 18px 16px;border-bottom:1px solid #1a1a30;display:flex;align-items:center;gap:11px; cursor:pointer;}
@@ -147,17 +127,15 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .btn-logout{background:transparent;border:none;cursor:pointer;color:#555;font-size:14px;padding:4px;}
 .btn-logout:hover{color:#f87171;}
 
-/* Content area */
 .adm-content{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.adm-topbar{background:#0a0a18;border-bottom:1px solid #1a1a30;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.adm-topbar{background:#0a0a18;border-bottom:1px solid #1a1a30;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0; flex-wrap:wrap; gap:10px;}
 .adm-topbar h1{font-size:1.05rem;font-weight:700;color:#fff;}
 .adm-topbar p{font-size:0.72rem;color:#555;margin-top:2px;}
 .adm-topbar-actions{display:flex;gap:8px;}
-.btn-primary{padding:8px 18px;background:#4a6cf7;border:none;border-radius:8px;color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;transition:0.2s;}
+.btn-primary{padding:8px 18px;background:#4a6cf7;border:none;border-radius:8px;color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:0.2s;}
 .btn-primary:hover{background:#3a5ce6;}
-.btn-secondary{padding:8px 16px;background:transparent;border:1px solid #252545;border-radius:8px;color:#888;font-size:0.8rem;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;}
+.btn-secondary{padding:8px 16px;background:transparent;border:1px solid #252545;border-radius:8px;color:#888;font-size:0.8rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
 
-/* Panels & Forms */
 .adm-panels{flex:1;overflow:hidden;display:flex;}
 .adm-panel{display:none;flex:1;overflow-y:auto;flex-direction:row;}
 .adm-panel.act{display:flex;}
@@ -168,16 +146,9 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .sf-title{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a6cf7;margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid #1a1a30;display:flex;align-items:center;gap:7px;}
 .sf-field{margin-bottom:12px;}
 .sf-field label{display:block;font-size:0.7rem;color:#777;font-weight:500;margin-bottom:5px;}
-.sf-field input, .sf-field textarea{width:100%;background:#12121f;border:1px solid #1e1e35;border-radius:7px;padding:8px 10px;font-size:0.82rem;color:#e0e0e0;font-family:inherit;outline:none; transition:0.2s;}
+.sf-field input, .sf-field textarea{width:100%;background:#12121f;border:1px solid #1e1e35;border-radius:7px;padding:8px 10px;font-size:0.82rem;color:#e0e0e0;outline:none; transition:0.2s;}
 .sf-field input:focus, .sem-row input:focus{border-color:#4a6cf7;}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-
-/* Dynamic Semester Inputs */
-.sem-row { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
-.sem-row input { background:#12121f; border:1px solid #1e1e35; border-radius:7px; padding:8px 10px; font-size:0.82rem; color:#e0e0e0; outline:none; transition:0.2s; }
-.sem-row .sem-n { flex: 1; }
-.sem-row .sem-v { width: 70px; }
-.sem-row button { background:none; border:none; color:#f87171; font-size:18px; cursor:pointer; padding: 0 4px; }
 
 /* Checkbox Toggle */
 .toggle-wrap{display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#e0e0e0;margin-bottom:12px;}
@@ -186,7 +157,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .toggle-switch.on{background:#4ade80;}
 .toggle-switch.on::after{transform:translateX(18px);}
 
-/* Admin Student List */
 .student-list-pane{width:300px;min-width:300px;background:#0a0a18;border-right:1px solid #1a1a30;display:flex;flex-direction:column;}
 .sl-search{padding:16px;border-bottom:1px solid #1a1a30;}
 .sl-search input{width:100%;background:#12121f;border:1px solid #252545;border-radius:8px;padding:10px 14px;font-size:0.8rem;color:#fff;outline:none;}
@@ -203,10 +173,15 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .sl-status.approved{background:rgba(74,222,128,0.15);color:#4ade80;}
 .sl-status.pending{background:rgba(250,204,21,0.15);color:#facc15;}
 
-/* Nav editor & logo upload */
+/* Dynamic Semester Inputs */
+.sem-row { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+.sem-row input { background:#12121f; border:1px solid #1e1e35; border-radius:7px; padding:8px 10px; font-size:0.82rem; color:#e0e0e0; outline:none; transition:0.2s; }
+.sem-row .sem-n { flex: 1; }
+.sem-row .sem-v { width: 70px; }
+.sem-row button { background:none; border:none; color:#f87171; font-size:18px; cursor:pointer; padding: 0 4px; }
+
 .nav-editor{display:flex;flex-direction:column;gap:6px;}
 .nav-item-row{display:flex;align-items:center;gap:7px;background:#12121f;border:1px solid #1e1e35;border-radius:7px;padding:7px 9px;}
-.nav-item-row .drag-handle{color:#333;cursor:grab;font-size:13px;flex-shrink:0;}
 .nav-item-row input{flex:1;background:transparent;border:none;outline:none;font-size:0.78rem;color:#ddd;padding:0;}
 .nav-item-row .chev-toggle{width:24px;height:24px;border-radius:5px;border:1px solid #252545;background:transparent;cursor:pointer;font-size:10px;color:#666;display:flex;align-items:center;justify-content:center;}
 .nav-item-row .chev-toggle.on{background:#1e2a5e;color:#7a9cf7;}
@@ -222,148 +197,147 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .save-toast{font-size:0.76rem;color:#4ade80;opacity:0;transition:opacity 0.3s;display:flex;align-items:center;gap:5px;}
 .save-toast.show{opacity:1;}
 
-.preview-area{flex:1;background:#090914;padding:28px 30px;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:20px;}
-.preview-mode-bar{display:flex;gap:8px;}
+.preview-area{flex:1;background:#090914;padding:30px;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.preview-scale-wrapper { display: flex; justify-content: center; transform-origin: top center; width: 100%; transition: 0.3s ease; }
+.preview-mode-bar{display:flex;gap:8px; margin-bottom: 20px;}
 .pmb-btn{padding:7px 16px;border:1px solid #1e1e35;border-radius:7px;background:#12121f;color:#555;font-size:0.75rem;font-weight:600;cursor:pointer;}
 .pmb-btn.on{background:#1e2a5e;border-color:#4a6cf7;color:#7a9cf7;}
 
-.mobile-tab-nav { display: none; width: 100%; background: #0a0a18; border-bottom: 1px solid #1e1e35; }
+.mobile-tab-nav { display: none; width: 100%; background: #0a0a18; border-bottom: 1px solid #1e1e35; flex-shrink:0; }
 .mt-btn { flex: 1; padding: 14px; text-align: center; color: #666; font-weight: 700; font-size: 0.85rem; background: transparent; border: none; border-bottom: 3px solid transparent; cursor: pointer; }
 .mt-btn.act { color: #4a6cf7; border-bottom-color: #4a6cf7; }
 
 /* ══════════════════════════════════════════════
-   DIU PORTAL CSS (Strictly Light Mode styled)
+   PORTAL CSS (STRICT ANTI-DARK-MODE SHIELD)
 ══════════════════════════════════════════════ */
-.diu{display:flex;background:#f8f9fa !important; color:#000 !important; font-family:'Inter',sans-serif;height:100%;position:relative;overflow:hidden;}
-.ds{width:252px;min-width:252px;background:#1a1a2e !important;display:flex;flex-direction:column;z-index:10;}
-.ds-logo{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #252545;}
+.diu{display:flex; font-family:'Inter',sans-serif;height:100%;position:relative;overflow:hidden; background-image: linear-gradient(#f8f9fa, #f8f9fa) !important; color:#111827 !important;}
+.ds{width:252px;min-width:252px; display:flex;flex-direction:column;z-index:10; background-image: linear-gradient(#1a1a2e, #1a1a2e) !important;}
+.ds-logo{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.1);}
 .ds-logo img{width:56px;height:56px;object-fit:contain;flex-shrink:0;}
+.ds-logo-t{line-height:1.15;}
 .ds-logo-t .t1{font-size:0.98rem;font-weight:800;color:#fff !important;display:block;}
 .ds-logo-t .t2{font-size:0.6rem;color:#4ade80 !important;font-style:italic;font-weight:600;display:block;}
 .ds-logo-t .t3{font-size:0.75rem;font-weight:700;color:#fff !important;display:block;}
 .ds-nav{padding:8px 0;overflow-y:auto;flex:1;}
-.ni{display:flex;align-items:center;gap:11px;padding:10px 16px;font-size:0.82rem;color:#8b92a5 !important;cursor:pointer;}
-.ni.act{background:#242440 !important;color:#fff !important;border-left:4px solid #4ade80;}
+.ni{display:flex;align-items:center;gap:11px;padding:10px 16px;font-size:0.82rem;color:#8b92a5 !important;}
+.ni.act{background-image: linear-gradient(#242440, #242440) !important; color:#fff !important; border-left:4px solid #4ade80;}
 .ni-ico{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.dm{flex:1;padding:0;overflow-y:auto;background:#f5f6f8 !important;display:flex;flex-direction:column;}
+.dm{flex:1;padding:0;overflow-y:auto; display:flex;flex-direction:column; background-image: linear-gradient(#f5f6f8, #f5f6f8) !important;}
 
-.glb-announce{background-color:#1d4ed8 !important;color:#fff !important;padding:8px 16px;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:10px;}
-.glb-announce span.badge{background:#ef4444 !important;padding:2px 6px;border-radius:4px;font-size:0.65rem;text-transform:uppercase;}
+.glb-announce{background-image: linear-gradient(#1d4ed8, #1d4ed8) !important;color:#fff !important;padding:8px 16px;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:10px;}
+.glb-announce span.badge{background-image: linear-gradient(#ef4444, #ef4444) !important;padding:2px 6px;border-radius:4px;font-size:0.65rem;text-transform:uppercase;letter-spacing:1px; color:#fff !important;}
 .glb-announce marquee{flex:1;}
 
 .dm-content{padding:24px;}
 .dm-title{font-size:1.55rem;font-weight:700;color:#111827 !important;line-height:1;}
 .dm-sub{font-size:0.75rem;color:#6b7280 !important;margin-top:4px;margin-bottom:24px;}
 .sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
-.sc{border-radius:12px;overflow:hidden;background-color:#2e3192 !important;}
+.sc{border-radius:12px;overflow:hidden;background-image: linear-gradient(#2e3192, #2e3192) !important;}
 .sc-h{padding:12px 14px 10px;text-align:center;font-size:0.87rem;font-weight:700;color:#fff !important;border-bottom:1px solid rgba(255,255,255,0.15);}
 .sc-v{padding:12px 14px 16px;text-align:center;font-size:1.15rem;font-weight:700;color:#fff !important;}
-.rt{border:1px solid #e5e7eb;border-radius:8px;background-color:#fff !important;padding:16px 20px 20px;margin-bottom:24px;}
+.rt{border:1px solid #e5e7eb;border-radius:8px; padding:16px 20px 20px;margin-bottom:24px; background-image: linear-gradient(#fff, #fff) !important;}
 .rt-t{font-size:0.95rem;font-weight:600;color:#111827 !important;display:flex;align-items:center;gap:8px;margin-bottom:16px;}
 .rt-e{text-align:center;color:#6b7280 !important;font-size:0.85rem;}
-.ch-wrap{border:1px solid #e5e7eb;border-radius:8px;background-color:#fff !important;padding:20px 24px 28px;}
+.ch-wrap{border:1px solid #e5e7eb;border-radius:8px; padding:20px 24px 28px; background-image: linear-gradient(#fff, #fff) !important;}
 .ch-title{font-size:1.1rem;font-weight:700;color:#111827 !important;margin-bottom:16px;}
 .ch-header{display:flex;align-items:center;gap:6px;justify-content:center;font-size:0.75rem;color:#4b5563 !important;margin-bottom:10px;}
 .ch-legend{display:flex;align-items:center;gap:8px;justify-content:center;font-size:0.75rem;color:#4b5563 !important;margin-bottom:20px;}
-.ch-ls{width:16px;height:16px;border-radius:3px;background-color:#a5d6b4 !important;}
-
-/* Infinite Desktop Chart */
+.ch-ls{width:16px;height:16px;border-radius:3px;background-image: linear-gradient(#a5d6b4, #a5d6b4) !important;}
 .ch-body{position:relative;padding-left:40px;}
 .ch-y{position:absolute;left:0;top:0;bottom:20px;width:32px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding-right:6px;}
 .ch-yt{font-size:0.7rem;color:#6b7280 !important;line-height:1;}
 .ch-bars-wrapper { overflow-x: auto; overflow-y: hidden; padding-bottom: 25px; margin-bottom: -25px; } 
-.ch-bars{display:flex;align-items:flex-end;border-left:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;height:200px;position:relative;background-image:repeating-linear-gradient(to bottom,#f3f4f6 0,#f3f4f6 1px,transparent 1px,transparent calc(200px/8)); min-width: 100%; width: max-content;}
-.ch-col{flex: 1 1 0; min-width: 65px; display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding:0 10px;position:relative;border-right:1px solid #f9fafb;}
+.ch-bars{display:flex;align-items:flex-end;border-left:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;height:200px;position:relative;background-image:repeating-linear-gradient(to bottom, #f3f4f6 0, #f3f4f6 1px, transparent 1px, transparent calc(200px/8)); min-width: 100%; width: max-content;}
+.ch-col{flex: 1 1 0; min-width: 80px; display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding:0 10px;position:relative;border-right:1px solid #f9fafb;}
 .ch-col:last-child{border-right:none;}
 .ch-b{width:100%;border-radius:6px 6px 0 0;display:flex;justify-content:center;padding-top:6px;}
 .ch-bv{font-size:0.75rem;font-weight:500;color:rgba(0,0,0,0.6) !important;}
-.ch-sl{font-size:0.75rem;color:#6b7280 !important;position:absolute;bottom:-22px;white-space:nowrap;}
+.ch-sl{font-size:0.75rem;color:#6b7280 !important;position:absolute;bottom:-22px; width:120%; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .dm-footer{text-align:center;font-size:0.8rem;color:#6b7280 !important;margin-top:24px;}
 .dm-footer a{color:#2563eb !important;font-weight:600;text-decoration:none;}
 
-/* Desktop preview wrapper */
-.bc{width:100%;max-width:1060px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);background-color:#fff !important;border:1px solid #444;display:flex;flex-direction:column;}
-.bc-tabs{background-color:#dde1e7 !important;display:flex;align-items:flex-end;padding:5px 8px 0;gap:2px;}
-.bc-tab{background-color:#fff !important;border:1px solid #c5c9d0;border-bottom:none;border-radius:5px 5px 0 0;padding:4px 12px;font-size:0.7rem;color:#222 !important;display:flex;align-items:center;gap:4px;height:26px;}
-.bc-toolbar{background-color:#f5f5f5 !important;height:38px;display:flex;align-items:center;padding:0 10px;gap:5px;border-bottom:1px solid #ddd;}
-.bc-url{flex:1;background-color:#fff !important;border:1px solid #ddd;border-radius:14px;height:26px;display:flex;align-items:center;padding:0 10px;gap:5px;font-size:0.72rem;color:#333 !important;}
-.live-clock{font-size:0.7rem;color:#666 !important;font-family:monospace;background:#e5e7eb !important;padding:3px 8px;border-radius:10px;font-weight:600;}
-
-/* SLEEK PHONE FRAME */
-.pf{
-  width:360px; height:740px; background-color:#111 !important; border-radius:44px; 
-  border:8px solid #1a1a1a; box-shadow:0 30px 70px rgba(0,0,0,0.8), inset 0 0 0 2px #333; 
-  overflow:hidden; position:relative; display:flex; flex-direction:column;
-}
-.pf::before{
-  content:''; position:absolute; top:12px; left:50%; transform:translateX(-50%); 
-  width:96px; height:28px; background-color:#000 !important; border-radius:20px; z-index:10; 
-  box-shadow: inset 0 -1px 2px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2);
-}
-.pf::after{
-  content:''; position:absolute; top:18px; left:calc(50% + 28px); 
-  width:10px; height:10px; background-color:#0f0f14 !important; border-radius:50%; z-index:11; 
-  box-shadow:inset 0 0 3px rgba(255,255,255,0.15);
-}
-
-.pscr{background-color:#f5f6f8 !important;width:100%;height:100%;overflow-y:auto;font-family:'Inter',sans-serif;position:relative;display:flex;flex-direction:column;}
-.ptb{background-color:#fff !important;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e7eb;}
+/* MOBILE SPECIFIC PORTAL CSS */
+.pscr{width:100%;height:100%;overflow-y:auto;font-family:'Inter',sans-serif;position:relative;display:flex;flex-direction:column; background-image: linear-gradient(#f5f6f8, #f5f6f8) !important; color:#111827 !important;}
+.ptb{padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e7eb; background-image: linear-gradient(#fff, #fff) !important;}
 .p-ham{font-size:20px;color:#374151 !important;}
+.p-usr{text-align:right;}
 .p-un{font-size:0.85rem;font-weight:700;color:#111827 !important;}
 .p-ui{font-size:0.75rem;color:#6b7280 !important;margin-top:2px;}
 .pb{padding:18px 16px 0;}
 .pb-t{font-size:1.35rem;font-weight:800;color:#111827 !important;}
 .pb-s{font-size:0.75rem;color:#6b7280 !important;margin-top:2px;margin-bottom:18px;}
 .mc-list{display:flex;flex-direction:column;gap:12px;margin-bottom:18px;}
-.mc{background-color:#2e3192 !important;border-radius:12px;overflow:hidden;}
+.mc{border-radius:12px;overflow:hidden; background-image: linear-gradient(#2e3192, #2e3192) !important;}
 .mc-h{padding:12px 16px;font-size:0.95rem;font-weight:700;color:#fff !important;text-align:center;border-bottom:1px solid rgba(255,255,255,0.15);}
 .mc-v{padding:12px 16px 14px;font-size:1.15rem;font-weight:700;color:#fff !important;text-align:center;}
-.mrt{background-color:#fff !important;border-radius:10px;padding:16px 18px;margin-bottom:18px;border:1px solid #e5e7eb;}
-.mch{background-color:#fff !important;border-radius:10px;padding:16px 16px 32px;border:1px solid #e5e7eb;margin-bottom:18px;}
+.mrt{border-radius:10px;padding:16px 18px;margin-bottom:18px;border:1px solid #e5e7eb; background-image: linear-gradient(#fff, #fff) !important;}
+.mch{border-radius:10px;padding:16px 16px 32px;border:1px solid #e5e7eb;margin-bottom:18px; background-image: linear-gradient(#fff, #fff) !important;}
 .mch-t{font-size:1rem;font-weight:800;color:#111827 !important;margin-bottom:12px;}
-
-/* Infinite Mobile Chart */
 .mch-area{display:flex;align-items:flex-end;height:180px;position:relative;padding-left:32px;}
 .mch-bi-wrapper { overflow-x: auto; overflow-y: hidden; width: 100%; padding-bottom: 25px; margin-bottom: -25px; }
-.mch-bi{display:flex;align-items:flex-end;border-left:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;height:162px;position:relative;background-image:repeating-linear-gradient(to bottom,#f3f4f6 0,#f3f4f6 1px,transparent 1px,transparent calc(162px/8)); min-width: 100%; width: max-content;}
-.mch-col{flex: 1 1 0; min-width: 50px; display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding:0 6px;position:relative;}
+.mch-bi{display:flex;align-items:flex-end;border-left:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;height:162px;position:relative;background-image:repeating-linear-gradient(to bottom, #f3f4f6 0, #f3f4f6 1px, transparent 1px, transparent calc(162px/8)); min-width: 100%; width: max-content;}
+.mch-col{flex: 1 1 0; min-width: 70px; display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding:0 6px;position:relative;}
 .mch-b{width:100%;border-radius:4px 4px 0 0;display:flex;justify-content:center;padding-top:5px;}
 .mch-bv{font-size:0.65rem;font-weight:600;color:rgba(0,0,0,0.5) !important;}
-.mch-sl{font-size:0.65rem;color:#6b7280 !important;position:absolute;bottom:-18px;white-space:nowrap;}
-
+.mch-sl{font-size:0.6rem;color:#6b7280 !important;position:absolute;bottom:-18px;width:120%;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .p-foot{text-align:center;font-size:0.75rem;color:#6b7280 !important;padding:16px;position:relative;}
+.p-hbar{display:flex;justify-content:center;padding-bottom:8px;}
+.p-hl{width:40%;height:4px;background:#e5e7eb;border-radius:4px;}
+
+/* Desktop preview container */
+.bc{width:100%;max-width:1060px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6); background-image: linear-gradient(#fff, #fff) !important; border:1px solid #444;display:flex;flex-direction:column;}
+.bc-tabs{display:flex;align-items:flex-end;padding:5px 8px 0;gap:2px; background-image: linear-gradient(#dde1e7, #dde1e7) !important;}
+.bc-tab{border:1px solid #c5c9d0;border-bottom:none;border-radius:5px 5px 0 0;padding:4px 12px;font-size:0.7rem; display:flex;align-items:center;gap:4px;height:26px; background-image: linear-gradient(#fff, #fff) !important; color:#222 !important;}
+.bc-toolbar{height:38px;display:flex;align-items:center;padding:0 10px;gap:5px;border-bottom:1px solid #ddd; background-image: linear-gradient(#f5f5f5, #f5f5f5) !important;}
+.bc-url{flex:1;border:1px solid #ddd;border-radius:14px;height:26px;display:flex;align-items:center;padding:0 10px;gap:5px;font-size:0.72rem; background-image: linear-gradient(#fff, #fff) !important; color:#333 !important;}
+.live-clock{font-size:0.7rem;font-family:monospace;padding:3px 8px;border-radius:10px;font-weight:600; background-image: linear-gradient(#e5e7eb, #e5e7eb) !important; color:#666 !important;}
+
+/* SLEEK PHONE FRAME */
+.pf{
+  width:360px; height:740px; border-radius:44px; 
+  border:8px solid #1a1a1a; box-shadow:0 30px 70px rgba(0,0,0,0.8), inset 0 0 0 2px #333; 
+  overflow:hidden; position:relative; display:flex; flex-direction:column; background-image: linear-gradient(#111, #111) !important;
+}
+.pf::before{
+  content:''; position:absolute; top:12px; left:50%; transform:translateX(-50%); 
+  width:96px; height:28px; border-radius:20px; z-index:10; 
+  box-shadow: inset 0 -1px 2px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2); background-image: linear-gradient(#000, #000) !important;
+}
+.pf::after{
+  content:''; position:absolute; top:18px; left:calc(50% + 28px); 
+  width:10px; height:10px; border-radius:50%; z-index:11; 
+  box-shadow:inset 0 0 3px rgba(255,255,255,0.15); background-image: linear-gradient(#0f0f14, #0f0f14) !important;
+}
 
 .logout-btn{padding:6px 12px;background:#e5e7eb;border-radius:6px;font-size:0.75rem;font-weight:600;color:#4b5563;cursor:pointer;border:none;margin-left:12px;transition:all 0.2s;}
 .logout-btn:hover{background:#f87171;color:#fff;}
 
 /* ══════════════════════════════════════════════
-   MOBILE RESPONSIVENESS FIXES (THE MAGIC)
+   MOBILE RESPONSIVENESS FIXES
 ══════════════════════════════════════════════ */
+.preview-scale-wrapper { display: flex; justify-content: center; transform-origin: top center; width: 100%; transition: 0.3s ease; }
+
 @media (max-width: 768px) {
-  /* Prevent iOS zoom */
   input, select, textarea { font-size: 16px !important; }
 
   /* Home Page Fixes */
-  .home-nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+  .site-header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+  .site-nav { flex-wrap: wrap; justify-content: center; }
   .hero h1 { font-size: 2.2rem; padding: 0 10px; }
-  .hero p { font-size: 1rem; }
+  .hero p { font-size: 1rem; padding: 0 10px; }
   .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
   .btn-hero-primary, .btn-hero-secondary { width: 100%; padding: 14px 20px; }
   
   .login-box { width: 90%; max-width: 400px; padding: 30px 20px; margin: auto; }
   
-  /* Flex Layout Fixes for Mobile Panes */
-  #pg-admin, #pg-student { flex-direction: column !important; min-height: 100vh; overflow-y: auto; overflow-x: hidden; display: none; }
-  #pg-admin.active, #pg-student.active { display: flex !important; }
+  #pg-admin, #pg-student { flex-direction: column; min-height: 100vh; overflow-y: auto; overflow-x: hidden; }
   
-  /* Show Mobile Tabs for Student Dashboard */
   .mobile-tab-nav { display: flex; }
   .settings-form.student-mode { width: 100%; min-width: 100%; border: none; padding: 20px; height: auto; }
   .adm-content.student-mode { width: 100%; display: none; } 
   .adm-content.student-mode.show { display: flex; }
   .settings-form.student-mode.hide { display: none; }
 
-  /* Admin Layout Mobile Overrides */
   .adm-sidebar { width: 100%; min-width: 100%; height: auto; border-right: none; border-bottom: 1px solid #1a1a30; position: relative; }
   .adm-nav { display: flex; overflow-x: auto; gap: 8px; padding: 10px; white-space: nowrap; flex-wrap: nowrap; }
   .adm-nav::-webkit-scrollbar { display: none; } 
@@ -372,29 +346,19 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
   
   .adm-content { overflow: visible; width: 100%; }
   .adm-topbar { flex-direction: column; gap: 12px; align-items: flex-start; }
-  .adm-topbar-actions { width: 100%; justify-content: space-between; }
+  .adm-topbar-actions { width: 100%; justify-content: space-between; flex-wrap: wrap;}
   .adm-topbar-actions button { flex: 1; justify-content: center; } 
   
   .adm-panel.act { flex-direction: column; }
   .settings-form { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid #1a1a30; height: auto; overflow: visible; padding: 20px 15px; }
   .student-list-pane { width: 100%; min-width: 100%; height: 350px; border-right: none; border-bottom: 1px solid #1a1a30; }
   
-  /* Dynamic Auto-Scaling for Previews */
   .preview-area { padding: 20px 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; width: 100%; }
   
-  .pf { 
-      transform: scale(calc(100vw / 400)); 
-      transform-origin: top center; 
-      margin-bottom: -15vh; 
-  } 
-  .bc { 
-      width: 1060px; max-width: 1060px;
-      transform: scale(calc(100vw / 1150)); 
-      transform-origin: top center; 
-      margin-bottom: -40vh; 
-  } 
+  .preview-scale-wrapper.mobile-frame { transform: scale(calc(100vw / 400)); margin-bottom: -15vh; } 
+  .preview-scale-wrapper.desktop-frame { transform: scale(calc(100vw / 1100)); margin-bottom: -40vh; } 
   
-  .dl-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .dl-bar { flex-direction: column; align-items: stretch; gap: 10px; padding: 15px; }
   .dl-bar button { width: 100%; justify-content: center; }
 }
 </style>
@@ -404,20 +368,20 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 <div id="pg-home" class="page active">
   <header class="site-header">
     <a href="#pg-home" class="site-logo" onclick="routeTo('pg-home')">
-      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#283593"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M11 9 L16 7 L21 9 L21 17 Q21 22 16 25 Q11 22 11 17 Z" fill="#3949ab" stroke="#fff" stroke-width="0.6"/><text x="16" y="19" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" font-family="Arial">DIU</text></svg>
-      Portal System
+      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#283593"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M11 9 L16 7 L21 9 L21 17 Q21 22 16 25 Q11 22 11 17 Z" fill="#3949ab" stroke="#fff" stroke-width="0.6"/><text x="16" y="19" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" font-family="Arial">AG</text></svg>
+      AuraGrade
     </a>
     <nav class="site-nav">
-      <a href="#features">Features</a>
+      <a href="#features" onclick="document.getElementById('features').scrollIntoView()">Features</a>
       <button class="btn-nav-login" onclick="routeTo('pg-login'); switchLoginMode('student');">Login</button>
       <button class="btn-nav-outline" onclick="routeTo('pg-login'); switchLoginMode('admin');">Admin</button>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-badge">Welcome to Next-Gen Campus Management</div>
-    <h1>Manage Your Academic Journey <span>Seamlessly</span></h1>
-    <p>Access your dashboard, update your financial records, check semester results, and stay informed with real-time university announcements—all in one secure place.</p>
+    <div class="hero-badge">The Ultimate CGPA Generator</div>
+    <h1>Hack Your Grades. <br><span>Prank Your Parents.</span></h1>
+    <p>AuraGrade is a fun, satirical project designed to generate hyper-realistic, fake university portal dashboards. Want to convince your parents you got a 4.0 for that extra allowance? You're in the right place.</p>
     <div class="hero-buttons">
       <button class="btn-hero-primary" onclick="routeTo('pg-login'); switchLoginMode('student');">Student Login →</button>
       <button class="btn-hero-secondary" onclick="routeTo('pg-login'); switchLoginMode('admin');">Administrator Access</button>
@@ -426,30 +390,30 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 
   <section id="features" class="features">
     <div class="features-header">
-      <h2>Why Use The DIU Portal?</h2>
-      <p>Designed for speed, security, and accessibility across all your devices.</p>
+      <h2>Why Use AuraGrade?</h2>
+      <p>Designed for speed, stealth, and looking 100% legitimate on any device.</p>
     </div>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="fc-icon">☁️</div>
-        <h3>Real-Time Cloud Sync</h3>
-        <p>All your data is securely stored and synced in real-time. Make a change on your laptop, and see it instantly on your phone.</p>
+        <h3>Real-Time Sync</h3>
+        <p>Your fake data is securely stored in the cloud. Change a grade on your laptop, and hand your phone to your parents. It updates instantly.</p>
       </div>
       <div class="feature-card">
         <div class="fc-icon">📱</div>
-        <h3>100% Mobile Responsive</h3>
-        <p>A flawless experience whether you are on a 4K desktop monitor or the latest smartphone. No squished text or broken layouts.</p>
+        <h3>Flawless Mobile View</h3>
+        <p>Built with anti-zoom and anti-dark mode shields so the fake portal always looks exactly like a pristine, native application.</p>
       </div>
       <div class="feature-card">
         <div class="fc-icon">📸</div>
         <h3>Instant Export</h3>
-        <p>Need a copy of your records? Use the built-in generator to instantly download high-quality mockup screenshots of your portal.</p>
+        <p>Need proof? Use the built-in generator to instantly download high-quality mockup screenshots of your 4.0 GPA.</p>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
-    <p>2026 © Developed for Educational & Mockup Purposes. Not affiliated with DIU.</p>
+    <p>2026 © AuraGrade. Developed for fun, educational & mockup purposes. Not affiliated with any real university.</p>
   </footer>
 </div>
 
@@ -457,9 +421,9 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
   <div class="login-box">
     <div class="login-logo" onclick="routeTo('pg-home')">
       <div class="login-logo-icon">
-        <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#283593"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M11 9 L16 7 L21 9 L21 17 Q21 22 16 25 Q11 22 11 17 Z" fill="#3949ab" stroke="#fff" stroke-width="0.6"/><text x="16" y="19" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" font-family="Arial">DIU</text></svg>
+        <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#283593"/><circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M11 9 L16 7 L21 9 L21 17 Q21 22 16 25 Q11 22 11 17 Z" fill="#3949ab" stroke="#fff" stroke-width="0.6"/><text x="16" y="19" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" font-family="Arial">AG</text></svg>
       </div>
-      <div><h2>DIU Portal System</h2><p>← Back to Home</p></div>
+      <div><h2>AuraGrade</h2><p>← Back to Home</p></div>
     </div>
     
     <div class="log-tabs">
@@ -475,7 +439,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <div class="lf-group"><label>STUDENT ID</label><input type="text" id="l-sid" placeholder="e.g. XXX-XX-XXX"></div>
       <div class="lf-group"><label>PASSWORD</label><input type="password" id="l-spass" placeholder="••••••••"></div>
       <button class="btn-login" onclick="doStudentAction()">Sign In</button>
-      <button class="btn-text" onclick="toggleRequestMode()" id="req-btn">New Student? Request Access</button>
+      <button class="btn-text" onclick="toggleRequestMode()" id="req-btn">New User? Request Access</button>
     </div>
     
     <div id="form-request" style="display:none;">
@@ -491,12 +455,10 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <div class="lf-group"><label>PASSWORD</label><input type="password" id="l-pass" placeholder="••••••••"></div>
       <button class="btn-login" onclick="doAdminLogin()">Secure Login →</button>
     </div>
-
-    <div class="support-link">Need help? <a href="mailto:asfqrhi@gmail.com">Contact Support</a></div>
   </div>
 </div>
 
-<div id="pg-student" class="page" style="flex-direction:row;">
+<div id="pg-student" class="page">
   <div class="mobile-tab-nav">
     <button class="mt-btn act" id="mt-edit" onclick="switchMobileTab('edit')">✏️ Edit Data</button>
     <button class="mt-btn" id="mt-preview" onclick="switchMobileTab('preview')">👁️ View Portal</button>
@@ -520,7 +482,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <button class="btn-secondary" style="width:100%; justify-content:center; font-size:0.7rem; padding:6px;" onclick="addMySem()">+ Add Semester</button>
     </div>
     
-    <button class="btn-primary" style="width:100%; justify-content:center;" onclick="saveMyStudentData()">💾 Save Details to Database</button>
+    <button class="btn-primary" style="width:100%; justify-content:center;" onclick="saveMyStudentData()">💾 Save Details to Cloud</button>
     <div class="save-toast" id="my-save-toast" style="margin-top:10px; justify-content:center;">✓ Data Saved</div>
   </div>
 
@@ -533,14 +495,18 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <button class="pmb-btn" id="my-pmb-mob" onclick="setMyPM('mobile')">📱 Mob</button>
       </div>
     </div>
-    <div class="preview-area"><div id="my-portal-preview"></div></div>
+    <div class="preview-area">
+        <div class="preview-scale-wrapper" id="my-scale-wrap">
+            <div id="my-portal-preview"></div>
+        </div>
+    </div>
   </div>
 </div>
 
-<div id="pg-admin" class="page" style="flex-direction:row;">
+<div id="pg-admin" class="page">
   <div class="adm-sidebar">
     <div class="adm-brand" onclick="routeTo('pg-home')" style="cursor:pointer;" title="Go to Home">
-      <div class="adm-brand-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#283593"/><text x="11" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff" font-family="Arial">DIU</text></svg></div>
+      <div class="adm-brand-icon"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#283593"/><text x="11" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff" font-family="Arial">AG</text></svg></div>
       <div><h2>Admin Panel</h2><p>Portal System</p></div>
     </div>
     <div class="adm-nav">
@@ -565,11 +531,14 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <div class="sf-section"><div class="sf-title">Sidebar Navigation Items</div><div class="nav-editor" id="nav-editor"></div><button class="btn-add-nav" onclick="addNavItem()">+ Add menu item</button></div>
         <div class="sf-section"><div class="sf-title">Stat Card Labels</div><div class="r2"><div class="sf-field"><label>Card 1</label><input type="text" id="cfg-c1l"></div><div class="sf-field"><label>Card 2</label><input type="text" id="cfg-c2l"></div></div><div class="r2"><div class="sf-field"><label>Card 3</label><input type="text" id="cfg-c3l"></div><div class="sf-field"><label>Card 4</label><input type="text" id="cfg-c4l"></div></div></div>
       </div>
-      <div class="preview-area"><div class="preview-mode-bar"><button class="pmb-btn on" id="pmb-desk" onclick="setPM('desktop')">🖥 Desktop</button><button class="pmb-btn" id="pmb-mob" onclick="setPM('mobile')">📱 Mobile</button></div><div id="portal-preview"></div></div>
+      <div class="preview-area">
+        <div class="preview-mode-bar"><button class="pmb-btn on" id="pmb-desk" onclick="setPM('desktop')">🖥 Desktop</button><button class="pmb-btn" id="pmb-mob" onclick="setPM('mobile')">📱 Mobile</button></div>
+        <div class="preview-scale-wrapper" id="admin-scale-wrap"><div id="portal-preview"></div></div>
+      </div>
     </div>
 
     <div id="panel-student" class="adm-panel">
-      <div class="student-list-pane"><div class="sl-search"><input type="text" id="stu-search" placeholder="Search..." onkeyup="renderAdminStudentList()"><button class="btn-primary" style="width:100%; margin-top:10px; justify-content:center;" onclick="createNewStudent()">+ Add Student</button></div><div class="sl-list" id="admin-sl-list"></div></div>
+      <div class="student-list-pane"><div class="sl-search"><input type="text" id="stu-search" placeholder="Search by ID or Name..." onkeyup="renderAdminStudentList()"><button class="btn-primary" style="width:100%; margin-top:10px; justify-content:center;" onclick="createNewStudent()">+ Add Student</button></div><div class="sl-list" id="admin-sl-list"></div></div>
       <div class="settings-form" id="student-edit-form" style="display:none; flex:1; max-width:450px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;"><h2 style="font-size:1rem; color:#fff;" id="se-title">Edit Student</h2><button class="btn-primary" id="se-approve-btn" style="display:none; background:#4ade80; color:#000;" onclick="approveCurrentStudent()">✓ Approve</button></div>
         <div class="sf-section"><div class="sf-title">Identity & Access</div><div class="sf-field"><label>Full Name</label><input type="text" id="se-name" oninput="liveUpdateAdminStudent()"></div><div class="r2"><div class="sf-field"><label>Student ID</label><input type="text" id="se-id" disabled style="opacity:0.5;"></div><div class="sf-field"><label>Password</label><input type="text" id="se-pass"></div></div></div>
@@ -653,8 +622,8 @@ let CFG = {
   admin: { username:'admin', password:'AdminDIU@2026' },
   students: [ JSON.parse(JSON.stringify(DEFAULT_STUDENT)) ],
   announce: { active: true, text: 'Welcome to the new semester! Ensure your registration is complete.' },
-  uni1:'Daffodil', uni2:'International', uni3:'University', logoSrc: null, year:'2026', footer:'Developed by Daffodil International University',
-  url:'https://studentportal.diu.edu.bd/dashboard', pageTitle:'Dashboard', pageSub:'Student Portal',
+  uni1:'AuraGrade', uni2:'University', uni3:'Portal System', logoSrc: null, year:'2026', footer:'Developed for Educational/Prank Purposes',
+  url:'https://studentportal.auragrade.edu/dashboard', pageTitle:'Dashboard', pageSub:'Student Portal',
   c1l:'Total Payable', c2l:'Total Paid', c3l:'Total Due', c4l:'Total Other',
   nav:[
     {label:'Dashboard',chevron:false},{label:'Student Profile',chevron:false},{label:'Payment Ledger',chevron:false},{label:'Waiver',chevron:false},
@@ -736,6 +705,26 @@ function updateClock() {
   const time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
   clocks.forEach(c => c.textContent = time);
 }
+
+function adjustScaleHeights() {
+  if (window.innerWidth <= 768) {
+    const pfAdmin = document.querySelector('#rt-admin.pf');
+    const bcAdmin = document.querySelector('#rt-admin.bc');
+    const wrapAdmin = document.getElementById('admin-scale-wrap');
+    if(pfAdmin && wrapAdmin) wrapAdmin.style.height = (pfAdmin.getBoundingClientRect().height) + 'px';
+    if(bcAdmin && wrapAdmin) wrapAdmin.style.height = (bcAdmin.getBoundingClientRect().height) + 'px';
+
+    const pfStudent = document.querySelector('#rt-student.pf');
+    const bcStudent = document.querySelector('#rt-student.bc');
+    const wrapStudent = document.getElementById('my-scale-wrap');
+    if(pfStudent && wrapStudent) wrapStudent.style.height = (pfStudent.getBoundingClientRect().height) + 'px';
+    if(bcStudent && wrapStudent) wrapStudent.style.height = (bcStudent.getBoundingClientRect().height) + 'px';
+  } else {
+    document.getElementById('admin-scale-wrap').style.height = 'auto';
+    document.getElementById('my-scale-wrap').style.height = 'auto';
+  }
+}
+window.addEventListener('resize', adjustScaleHeights);
 
 /* ─────────────────────────────────────────────
    5. LOGIN LOGIC
@@ -883,9 +872,14 @@ function liveUpdateMyStudent() {
   }));
 
   const el = document.getElementById('my-portal-preview');
+  
+  const scaleClass = myPreviewMode === 'desktop' ? 'desktop-frame' : 'mobile-frame';
+  document.getElementById('my-scale-wrap').className = `preview-scale-wrapper ${scaleClass}`;
+
   if(myPreviewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-student"><div class="bc-tabs"><div class="bc-tab"><span>Student Portal</span></div></div><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span><span class="live-clock"></span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, tempStu)}</div></div>`;
   else el.innerHTML = `<div class="pf" id="rt-student"><div class="pscr">${getMobileHTML(CFG, tempStu)}</div></div>`;
   updateClock();
+  setTimeout(adjustScaleHeights, 50); 
 }
 
 function saveMyStudentData(){
@@ -1008,13 +1002,24 @@ function applyAndGen(){
   saveCFG(); genPreview(); const t=document.getElementById('save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-function setPM(m){ previewMode=m; document.getElementById('pmb-desk').classList.toggle('on',m==='desktop'); document.getElementById('pmb-mob').classList.toggle('on',m==='mobile'); genPreview(); }
+function setPM(m){ 
+  previewMode=m; 
+  document.getElementById('pmb-desk').classList.toggle('on',m==='desktop'); 
+  document.getElementById('pmb-mob').classList.toggle('on',m==='mobile'); 
+  genPreview(); 
+}
 
 function genPreview(){
   const el=document.getElementById('portal-preview'); const d_stu = CFG.students[0] || DEFAULT_STUDENT; 
+  
+  const scaleClass = previewMode === 'desktop' ? 'desktop-frame' : 'mobile-frame';
+  document.getElementById('admin-scale-wrap').className = `preview-scale-wrapper ${scaleClass}`;
+
   if(previewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-admin"><div class="bc-tabs"><div class="bc-tab"><span>Student Portal</span></div></div><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span><span class="live-clock"></span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, d_stu)}</div></div>`;
   else el.innerHTML = `<div class="pf" id="rt-admin"><div class="pscr">${getMobileHTML(CFG, d_stu)}</div></div>`;
+  
   updateClock();
+  setTimeout(adjustScaleHeights, 50); 
 }
 
 /* ─────────────────────────────────────────────
@@ -1029,13 +1034,14 @@ function getDesktopHTML(cfg, stu) {
   const navHTML=cfg.nav.map((item,i)=>`<div class="ni${i===0?' act':''}"><div class="ni-ico">${getIcon(i)}</div><span style="font-size:0.8rem">${escHtml(item.label)}</span>${item.chevron?'<span class="ni-ch">›</span>':''}</div>`).join('');
   const barsHTML=stu.sems.map((s,i)=>{
     const h=Math.round(Math.min(1,s.v/4)*178);
-    return `<div class="ch-col"><div class="ch-b" style="height:${h}px;background-color:${DC[i%DC.length]};"><span class="ch-bv">${s.v.toFixed(2)}</span></div><span class="ch-sl">${escHtml(s.n)}</span></div>`;
+    return `<div class="ch-col"><div class="ch-b" style="height:${h}px;background-image:linear-gradient(${DC[i%DC.length]}, ${DC[i%DC.length]}) !important;"><span class="ch-bv">${s.v.toFixed(2)}</span></div><span class="ch-sl">${escHtml(s.n)}</span></div>`;
   }).join('');
+  
   const announcementHTML = cfg.announce.active ? `<div class="glb-announce"><span class="badge">Notice</span><marquee scrollamount="5">${escHtml(cfg.announce.text)}</marquee></div>` : '';
 
   return `
     <div class="ds">
-      <div class="ds-logo">${cfg.logoSrc?`<img src="${cfg.logoSrc}">`:`<svg width="48" height="48" viewBox="0 0 56 56" style="flex-shrink:0"><circle cx="28" cy="28" r="27" fill="#283593"/><circle cx="28" cy="28" r="22" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M20 16 L28 12 L36 16 L36 28 Q36 36 28 40 Q20 36 20 28 Z" fill="#3949ab" stroke="#fff" stroke-width="0.8"/><text x="28" y="26" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff" font-family="Arial">DIU</text></svg>`}
+      <div class="ds-logo">${cfg.logoSrc?`<img src="${cfg.logoSrc}">`:`<svg width="48" height="48" viewBox="0 0 56 56" style="flex-shrink:0"><circle cx="28" cy="28" r="27" fill="#283593"/><circle cx="28" cy="28" r="22" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M20 16 L28 12 L36 16 L36 28 Q36 36 28 40 Q20 36 20 28 Z" fill="#3949ab" stroke="#fff" stroke-width="0.8"/><text x="28" y="26" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff" font-family="Arial">AG</text></svg>`}
         <div class="ds-logo-t"><span class="t1">${escHtml(cfg.uni1)}</span><span class="t2">${escHtml(cfg.uni2)}</span><span class="t3">${escHtml(cfg.uni3)}</span></div>
       </div>
       <div class="ds-nav">${navHTML}</div>
@@ -1072,12 +1078,13 @@ function getDesktopHTML(cfg, stu) {
 function getMobileHTML(cfg, stu) {
   const barsHTML=stu.sems.map((s,i)=>{
     const h=Math.round(Math.min(1,s.v/4)*145);
-    return `<div class="mch-col"><div class="mch-b" style="height:${h}px;background-color:${MC[i%MC.length]};"><span class="mch-bv">${s.v.toFixed(2)}</span></div><span class="mch-sl">${escHtml(s.n)}</span></div>`;
+    return `<div class="mch-col"><div class="mch-b" style="height:${h}px;background-image:linear-gradient(${MC[i%MC.length]}, ${MC[i%MC.length]}) !important;"><span class="mch-bv">${s.v.toFixed(2)}</span></div><span class="mch-sl">${escHtml(s.n)}</span></div>`;
   }).join('');
+  
   const announcementHTML = cfg.announce.active ? `<div class="glb-announce" style="font-size:0.7rem; padding:6px 12px;"><span class="badge">Notice</span><marquee scrollamount="4">${escHtml(cfg.announce.text)}</marquee></div>` : '';
 
   return `
-    <div style="height:44px; background-color:#fff !important; display:flex; justify-content:space-between; align-items:flex-end; padding:0 24px 10px; font-size:0.8rem; font-weight:700; color:#000 !important; flex-shrink:0;">
+    <div style="height:44px; background-image:linear-gradient(#fff,#fff) !important; display:flex; justify-content:space-between; align-items:flex-end; padding:0 24px 10px; font-size:0.8rem; font-weight:700; color:#000 !important; flex-shrink:0;">
       <span class="live-clock">9:41</span>
       <span style="font-size:0.7rem; letter-spacing:2px;">5G 🔋</span>
     </div>
@@ -1113,7 +1120,7 @@ async function downloadScreenshot(targetId){
     const canvas=await html2canvas(el,{
       scale:2, useCORS:true, backgroundColor:(targetId==='rt-student'?myPreviewMode:previewMode)==='desktop'?'#dde1e7':'#1a1a1a', logging: false
     }); 
-    const a=document.createElement('a'); a.download=`portal-${Date.now()}.png`; a.href=canvas.toDataURL('image/png'); a.click(); 
+    const a=document.createElement('a'); a.download=`AuraGrade-${Date.now()}.png`; a.href=canvas.toDataURL('image/png'); a.click(); 
   }catch(e){ alert("Error downloading screenshot. Check browser permissions."); }
 }
 
@@ -1123,6 +1130,12 @@ async function downloadScreenshot(targetId){
 window.onload = function(){ 
   initRealtimeSync();
   setInterval(updateClock, 1000);
+  
+  const hash = window.location.hash.substring(1);
+  if(hash && document.getElementById(hash)) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(hash).classList.add('active');
+  }
 };
 </script>
 </body>
