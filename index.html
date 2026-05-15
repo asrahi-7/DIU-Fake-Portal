@@ -123,12 +123,10 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .btn-secondary{padding:8px 16px;background:transparent;border:1px solid #252545;border-radius:8px;color:#888;font-size:0.8rem;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;}
 .btn-secondary:hover{border-color:#4a6cf7;color:#ddd;}
 
-/* Panels */
+/* Panels & Forms */
 .adm-panels{flex:1;overflow:hidden;display:flex;}
 .adm-panel{display:none;flex:1;overflow-y:auto;flex-direction:row;}
 .adm-panel.act{display:flex;}
-
-/* Settings Forms */
 .settings-form{width:380px;min-width:380px;padding:24px;overflow-y:auto;border-right:1px solid #1a1a30;background:#0d0d1a;}
 .settings-form::-webkit-scrollbar{width:4px;}
 .settings-form::-webkit-scrollbar-thumb{background:#1a1a30;}
@@ -140,7 +138,14 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .sf-field input:focus{border-color:#4a6cf7;}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 
-/* Admin Student List (Left Pane of Student Data) */
+/* Checkbox Toggle */
+.toggle-wrap{display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#e0e0e0;margin-bottom:12px;}
+.toggle-switch{position:relative;width:40px;height:22px;background:#252545;border-radius:20px;cursor:pointer;transition:0.3s;}
+.toggle-switch::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:0.3s;}
+.toggle-switch.on{background:#4ade80;}
+.toggle-switch.on::after{transform:translateX(18px);}
+
+/* Admin Student List */
 .student-list-pane{width:300px;min-width:300px;background:#0a0a18;border-right:1px solid #1a1a30;display:flex;flex-direction:column;}
 .sl-search{padding:16px;border-bottom:1px solid #1a1a30;}
 .sl-search input{width:100%;background:#12121f;border:1px solid #252545;border-radius:8px;padding:10px 14px;font-size:0.8rem;color:#fff;outline:none;}
@@ -179,7 +184,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .save-toast.show{opacity:1;}
 
 .preview-area{flex:1;background:#090914;padding:28px 30px;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:20px;}
-.preview-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:#2a2a45;font-weight:600;}
 .preview-mode-bar{display:flex;gap:8px;}
 .pmb-btn{padding:7px 16px;border:1px solid #1e1e35;border-radius:7px;background:#12121f;color:#555;font-size:0.75rem;font-weight:600;cursor:pointer;}
 .pmb-btn.on{background:#1e2a5e;border-color:#4a6cf7;color:#7a9cf7;}
@@ -187,8 +191,8 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 /* ══════════════════════════════════════════════
    DIU PORTAL CSS (Shared Preview)
 ══════════════════════════════════════════════ */
-.diu{display:flex;background:#f8f9fa;font-family:'Inter','Segoe UI',Arial,sans-serif;height:100%;}
-.ds{width:252px;min-width:252px;background:#1a1a2e;display:flex;flex-direction:column;}
+.diu{display:flex;background:#f8f9fa;font-family:'Inter','Segoe UI',Arial,sans-serif;height:100%;position:relative;overflow:hidden;}
+.ds{width:252px;min-width:252px;background:#1a1a2e;display:flex;flex-direction:column;z-index:10;}
 .ds-logo{padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #252545;}
 .ds-logo img{width:56px;height:56px;object-fit:contain;flex-shrink:0;}
 .ds-logo-t{line-height:1.15;}
@@ -202,7 +206,14 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .ni:hover{background:#22223a;color:#fff;}
 .ni.act{background:#242440;color:#fff;border-left:4px solid #4ade80;padding-left:12px;}
 .ni-ico{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.dm{flex:1;padding:24px;overflow-y:auto;background:#f5f6f8;}
+.dm{flex:1;padding:0;overflow-y:auto;background:#f5f6f8;display:flex;flex-direction:column;}
+
+/* Announcement Banner */
+.glb-announce{background-color:#1d4ed8;color:#fff;padding:8px 16px;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:10px;}
+.glb-announce span.badge{background:#ef4444;padding:2px 6px;border-radius:4px;font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;}
+.glb-announce marquee{flex:1;}
+
+.dm-content{padding:24px;}
 .dm-title{font-size:1.55rem;font-weight:700;color:#111827;line-height:1;}
 .dm-sub{font-size:0.75rem;color:#6b7280;margin-top:4px;margin-bottom:24px;}
 .sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
@@ -230,7 +241,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .dm-footer a{color:#2563eb;font-weight:600;text-decoration:none;}
 
 /* MOBILE CSS */
-.pscr{background-color:#f5f6f8;width:100%;height:100%;overflow-y:auto;font-family:'Inter',sans-serif;position:relative;}
+.pscr{background-color:#f5f6f8;width:100%;height:100%;overflow-y:auto;font-family:'Inter',sans-serif;position:relative;display:flex;flex-direction:column;}
 .ptb{background-color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 2px rgba(0,0,0,0.02);}
 .p-ham{font-size:20px;color:#374151;cursor:pointer;}
 .p-usr{text-align:right;}
@@ -255,25 +266,24 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .p-foot{text-align:center;font-size:0.75rem;color:#6b7280;padding:16px;position:relative;}
 
 /* Desktop preview wrapper */
-.bc{width:100%;max-width:1060px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);background-color:#fff;border:1px solid #444;}
+.bc{width:100%;max-width:1060px;border-radius:8px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);background-color:#fff;border:1px solid #444;display:flex;flex-direction:column;}
 .bc-tabs{background-color:#dde1e7;display:flex;align-items:flex-end;padding:5px 8px 0;gap:2px;}
 .bc-tab{background-color:#fff;border:1px solid #c5c9d0;border-bottom:none;border-radius:5px 5px 0 0;padding:4px 12px;font-size:0.7rem;color:#222;display:flex;align-items:center;gap:4px;height:26px;}
 .bc-toolbar{background-color:#f5f5f5;height:38px;display:flex;align-items:center;padding:0 10px;gap:5px;border-bottom:1px solid #ddd;}
 .bc-url{flex:1;background-color:#fff;border:1px solid #ddd;border-radius:14px;height:26px;display:flex;align-items:center;padding:0 10px;gap:5px;font-size:0.72rem;color:#333;}
+.live-clock{font-size:0.7rem;color:#666;font-family:monospace;background:#e5e7eb;padding:3px 8px;border-radius:10px;font-weight:600;}
 
-/* SLEEK PHONE FRAME (Modern Dynamic Island) */
+/* SLEEK PHONE FRAME */
 .pf{
   width:360px; height:740px; background-color:#111; border-radius:44px; 
   border:8px solid #1a1a1a; box-shadow:0 30px 70px rgba(0,0,0,0.8), inset 0 0 0 2px #333; 
-  overflow:hidden; position:relative; display:flex;
+  overflow:hidden; position:relative; display:flex; flex-direction:column;
 }
-/* The Pill / Dynamic Island */
 .pf::before{
   content:''; position:absolute; top:12px; left:50%; transform:translateX(-50%); 
   width:96px; height:28px; background-color:#000; border-radius:20px; z-index:10; 
   box-shadow: inset 0 -1px 2px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2);
 }
-/* Subtle camera lens reflection inside the pill */
 .pf::after{
   content:''; position:absolute; top:18px; left:calc(50% + 28px); 
   width:10px; height:10px; background-color:#0f0f14; border-radius:50%; z-index:11; 
@@ -308,7 +318,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     <div class="login-msg" id="login-msg"></div>
     
     <div id="form-student">
-      <div class="lf-group"><label>STUDENT ID</label><input type="text" id="l-sid" placeholder="e.g. 252-15-900"></div>
+      <div class="lf-group"><label>STUDENT ID</label><input type="text" id="l-sid" placeholder="e.g. XXX-XX-XXX"></div>
       <div class="lf-group"><label>PASSWORD</label><input type="password" id="l-spass" placeholder="••••••••"></div>
       <button class="btn-login" onclick="doStudentAction()">Sign In</button>
       <button class="btn-text" onclick="toggleRequestMode()" id="req-btn">New Student? Request Access</button>
@@ -316,7 +326,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     
     <div id="form-request" style="display:none;">
       <div class="lf-group"><label>FULL NAME</label><input type="text" id="r-name" placeholder="John Doe"></div>
-      <div class="lf-group"><label>STUDENT ID</label><input type="text" id="r-sid" placeholder="252-XX-XXX"></div>
+      <div class="lf-group"><label>STUDENT ID</label><input type="text" id="r-sid" placeholder="XXX-XX-XXX"></div>
       <div class="lf-group"><label>CREATE PASSWORD</label><input type="password" id="r-pass" placeholder="••••••••"></div>
       <button class="btn-login" onclick="submitRequest()">Submit Request</button>
       <button class="btn-text" onclick="toggleRequestMode()">Back to Login</button>
@@ -348,32 +358,32 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     <div class="sf-section">
       <div class="sf-title">Update Financial Data</div>
       <div class="r2">
-        <div class="sf-field"><label>Total Payable</label><input type="text" id="my-pay"></div>
-        <div class="sf-field"><label>Total Paid</label><input type="text" id="my-paid"></div>
+        <div class="sf-field"><label>Total Payable</label><input type="text" id="my-pay" oninput="liveUpdateMyStudent()"></div>
+        <div class="sf-field"><label>Total Paid</label><input type="text" id="my-paid" oninput="liveUpdateMyStudent()"></div>
       </div>
       <div class="r2">
-        <div class="sf-field"><label>Total Due</label><input type="text" id="my-due"></div>
-        <div class="sf-field"><label>Total Other</label><input type="text" id="my-oth"></div>
+        <div class="sf-field"><label>Total Due</label><input type="text" id="my-due" oninput="liveUpdateMyStudent()"></div>
+        <div class="sf-field"><label>Total Other</label><input type="text" id="my-oth" oninput="liveUpdateMyStudent()"></div>
       </div>
     </div>
     
     <div class="sf-section">
       <div class="sf-title">Update Semester CGPA</div>
       <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;">
-        <div class="sf-field"><input type="text" id="my-s1n" placeholder="Semester 1"></div>
-        <div class="sf-field"><input type="number" id="my-s1v" step="0.01"></div>
+        <div class="sf-field"><input type="text" id="my-s1n" placeholder="Semester 1" oninput="liveUpdateMyStudent()"></div>
+        <div class="sf-field"><input type="number" id="my-s1v" step="0.01" oninput="liveUpdateMyStudent()"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;">
-        <div class="sf-field"><input type="text" id="my-s2n" placeholder="Semester 2"></div>
-        <div class="sf-field"><input type="number" id="my-s2v" step="0.01"></div>
+        <div class="sf-field"><input type="text" id="my-s2n" placeholder="Semester 2" oninput="liveUpdateMyStudent()"></div>
+        <div class="sf-field"><input type="number" id="my-s2v" step="0.01" oninput="liveUpdateMyStudent()"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;">
-        <div class="sf-field"><input type="text" id="my-s3n" placeholder="Semester 3"></div>
-        <div class="sf-field"><input type="number" id="my-s3v" step="0.01"></div>
+        <div class="sf-field"><input type="text" id="my-s3n" placeholder="Semester 3" oninput="liveUpdateMyStudent()"></div>
+        <div class="sf-field"><input type="number" id="my-s3v" step="0.01" oninput="liveUpdateMyStudent()"></div>
       </div>
     </div>
     
-    <button class="btn-primary" style="width:100%; justify-content:center;" onclick="saveMyStudentData()">💾 Save & Update Preview</button>
+    <button class="btn-primary" style="width:100%; justify-content:center;" onclick="saveMyStudentData()">💾 Save Details to Database</button>
     <div class="save-toast" id="my-save-toast" style="margin-top:10px; justify-content:center;">✓ Data Saved</div>
   </div>
 
@@ -441,6 +451,18 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 
     <div id="panel-portal" class="adm-panel act">
       <div class="settings-form">
+        
+        <div class="sf-section">
+          <div class="sf-title">Global Announcement</div>
+          <div class="toggle-wrap">
+            <div class="toggle-switch" id="ann-toggle" onclick="toggleAnnouncement()"></div>
+            <span>Show Announcement Banner</span>
+          </div>
+          <div class="sf-field">
+            <textarea id="cfg-announce" placeholder="Enter announcement text here..."></textarea>
+          </div>
+        </div>
+
         <div class="sf-section">
           <div class="sf-title">University Logo</div>
           <div class="logo-upload-area" id="logo-drop" onclick="document.getElementById('logo-file').click()">
@@ -449,21 +471,21 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
             <div id="logo-placeholder"><div style="font-size:28px;margin-bottom:6px">🖼️</div><p>Click to upload logo</p></div>
           </div>
           <div style="margin-top:8px;" class="r2">
-            <div class="sf-field"><label>Line 1</label><input type="text" id="cfg-uni1" value="Daffodil"></div>
-            <div class="sf-field"><label>Line 2</label><input type="text" id="cfg-uni2" value="International"></div>
+            <div class="sf-field"><label>Line 1</label><input type="text" id="cfg-uni1"></div>
+            <div class="sf-field"><label>Line 2</label><input type="text" id="cfg-uni2"></div>
           </div>
-          <div class="sf-field"><label>Line 3</label><input type="text" id="cfg-uni3" value="University"></div>
+          <div class="sf-field"><label>Line 3</label><input type="text" id="cfg-uni3"></div>
         </div>
         <div class="sf-section">
           <div class="sf-title">Branding</div>
           <div class="r2">
-            <div class="sf-field"><label>Footer Year</label><input type="text" id="cfg-year" value="2026"></div>
-            <div class="sf-field"><label>Footer Text</label><input type="text" id="cfg-footer" value="Developed by Daffodil International University"></div>
+            <div class="sf-field"><label>Footer Year</label><input type="text" id="cfg-year"></div>
+            <div class="sf-field"><label>Footer Text</label><input type="text" id="cfg-footer"></div>
           </div>
-          <div class="sf-field"><label>Portal URL</label><input type="text" id="cfg-url" value="https://studentportal.diu.edu.bd/dashboard"></div>
+          <div class="sf-field"><label>Portal URL</label><input type="text" id="cfg-url"></div>
           <div class="r2">
-            <div class="sf-field"><label>Page Title</label><input type="text" id="cfg-page-title" value="Dashboard"></div>
-            <div class="sf-field"><label>Page Subtitle</label><input type="text" id="cfg-page-sub" value="Student Portal"></div>
+            <div class="sf-field"><label>Page Title</label><input type="text" id="cfg-page-title"></div>
+            <div class="sf-field"><label>Page Subtitle</label><input type="text" id="cfg-page-sub"></div>
           </div>
         </div>
         <div class="sf-section">
@@ -474,12 +496,12 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <div class="sf-section">
           <div class="sf-title">Stat Card Labels</div>
           <div class="r2">
-            <div class="sf-field"><label>Card 1</label><input type="text" id="cfg-c1l" value="Total Payable"></div>
-            <div class="sf-field"><label>Card 2</label><input type="text" id="cfg-c2l" value="Total Paid"></div>
+            <div class="sf-field"><label>Card 1</label><input type="text" id="cfg-c1l"></div>
+            <div class="sf-field"><label>Card 2</label><input type="text" id="cfg-c2l"></div>
           </div>
           <div class="r2">
-            <div class="sf-field"><label>Card 3</label><input type="text" id="cfg-c3l" value="Total Due"></div>
-            <div class="sf-field"><label>Card 4</label><input type="text" id="cfg-c4l" value="Total Other"></div>
+            <div class="sf-field"><label>Card 3</label><input type="text" id="cfg-c3l"></div>
+            <div class="sf-field"><label>Card 4</label><input type="text" id="cfg-c4l"></div>
           </div>
         </div>
       </div>
@@ -507,7 +529,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         </div>
         <div class="sf-section">
           <div class="sf-title">Identity & Access</div>
-          <div class="sf-field"><label>Full Name</label><input type="text" id="se-name"></div>
+          <div class="sf-field"><label>Full Name</label><input type="text" id="se-name" oninput="liveUpdateAdminStudent()"></div>
           <div class="r2">
             <div class="sf-field"><label>Student ID</label><input type="text" id="se-id" disabled style="opacity:0.5;"></div>
             <div class="sf-field"><label>Password</label><input type="text" id="se-pass"></div>
@@ -516,19 +538,19 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <div class="sf-section">
           <div class="sf-title">Financial Data</div>
           <div class="r2">
-            <div class="sf-field"><label>Total Payable</label><input type="text" id="se-pay"></div>
-            <div class="sf-field"><label>Total Paid</label><input type="text" id="se-paid"></div>
+            <div class="sf-field"><label>Total Payable</label><input type="text" id="se-pay" oninput="liveUpdateAdminStudent()"></div>
+            <div class="sf-field"><label>Total Paid</label><input type="text" id="se-paid" oninput="liveUpdateAdminStudent()"></div>
           </div>
           <div class="r2">
-            <div class="sf-field"><label>Total Due</label><input type="text" id="se-due"></div>
-            <div class="sf-field"><label>Total Other</label><input type="text" id="se-oth"></div>
+            <div class="sf-field"><label>Total Due</label><input type="text" id="se-due" oninput="liveUpdateAdminStudent()"></div>
+            <div class="sf-field"><label>Total Other</label><input type="text" id="se-oth" oninput="liveUpdateAdminStudent()"></div>
           </div>
         </div>
         <div class="sf-section">
           <div class="sf-title">CGPA History</div>
-          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s1n" placeholder="Sem 1"></div><div class="sf-field"><input type="number" id="se-s1v" step="0.01"></div></div>
-          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s2n" placeholder="Sem 2"></div><div class="sf-field"><input type="number" id="se-s2v" step="0.01"></div></div>
-          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s3n" placeholder="Sem 3"></div><div class="sf-field"><input type="number" id="se-s3v" step="0.01"></div></div>
+          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s1n" placeholder="Sem 1" oninput="liveUpdateAdminStudent()"></div><div class="sf-field"><input type="number" id="se-s1v" step="0.01" oninput="liveUpdateAdminStudent()"></div></div>
+          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s2n" placeholder="Sem 2" oninput="liveUpdateAdminStudent()"></div><div class="sf-field"><input type="number" id="se-s2v" step="0.01" oninput="liveUpdateAdminStudent()"></div></div>
+          <div style="display:grid;grid-template-columns:1fr 70px;gap:8px;"><div class="sf-field"><input type="text" id="se-s3n" placeholder="Sem 3" oninput="liveUpdateAdminStudent()"></div><div class="sf-field"><input type="number" id="se-s3v" step="0.01" oninput="liveUpdateAdminStudent()"></div></div>
         </div>
         <div style="display:flex; gap:10px;">
           <button class="btn-primary" style="flex:1; justify-content:center;" onclick="saveCurrentStudent()">Save Details</button>
@@ -575,7 +597,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
    DATABASE & STATE
 ───────────────────────────────────────────── */
 const DEFAULT_STUDENT = {
-  name: 'Mim Maha Zabin', id: '252-15-900', pass: 'diustudent', status: 'approved',
+  name: 'Demo Student', id: 'XXX-XX-XXX', pass: 'demo123', status: 'approved',
   pay: '241,501.00', paid: '276,568.00', due: '-35,067.00', oth: '0.00',
   sems: [{n:'Summer 2025',v:3.38}, {n:'Fall 2025',v:2.69}, {n:'Spring 2026',v:3.22}]
 };
@@ -583,6 +605,7 @@ const DEFAULT_STUDENT = {
 let CFG = {
   admin: { username:'admin', password:'AdminDIU@2026' },
   students: [ JSON.parse(JSON.stringify(DEFAULT_STUDENT)) ],
+  announce: { active: false, text: 'Welcome to the new semester! Ensure your registration is complete.' },
   uni1:'Daffodil', uni2:'International', uni3:'University', logoSrc: null, year:'2026', footer:'Developed by Daffodil International University',
   url:'https://studentportal.diu.edu.bd/dashboard', pageTitle:'Dashboard', pageSub:'Student Portal',
   c1l:'Total Payable', c2l:'Total Paid', c3l:'Total Due', c4l:'Total Other',
@@ -603,6 +626,41 @@ let loggedInStudent = null;
 
 function saveCFG(){ try{ localStorage.setItem('diusys_cfg',JSON.stringify(CFG)); }catch(e){} }
 function loadCFG(){ try{ const s=localStorage.getItem('diusys_cfg'); if(s) CFG=Object.assign({},CFG,JSON.parse(s)); }catch(e){} }
+
+/* Session Management */
+function saveSession(type, id) { localStorage.setItem('diusys_session', JSON.stringify({type, id})); }
+function clearSession() { localStorage.removeItem('diusys_session'); }
+function checkSession() {
+  const sessStr = localStorage.getItem('diusys_session');
+  if(!sessStr) return;
+  try {
+    const sess = JSON.parse(sessStr);
+    if(sess.type === 'admin') {
+      document.getElementById('pg-login').classList.remove('active');
+      document.getElementById('pg-admin').classList.add('active');
+      document.getElementById('adm-username').textContent = CFG.admin.username;
+      initAdmin();
+    } else if (sess.type === 'student') {
+      const stu = CFG.students.find(s => s.id === sess.id);
+      if(stu && stu.status === 'approved') {
+        loggedInStudent = stu;
+        document.getElementById('pg-login').classList.remove('active');
+        document.getElementById('pg-student').classList.add('active');
+        initStudentDashboard();
+      } else { clearSession(); }
+    }
+  } catch(e) { clearSession(); }
+}
+
+/* Live Clock Widget */
+function updateClock() {
+  const clocks = document.querySelectorAll('.live-clock');
+  if(!clocks.length) return;
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+  clocks.forEach(c => c.textContent = time);
+}
+setInterval(updateClock, 1000);
 
 /* ─────────────────────────────────────────────
    LOGIN LOGIC
@@ -639,6 +697,7 @@ function doStudentAction(){
   if(stu.status === 'pending') { showMsg('login-msg', 'Account is pending admin approval.', 'warn'); return; }
   
   loggedInStudent = stu;
+  saveSession('student', stu.id);
   document.getElementById('pg-login').classList.remove('active');
   document.getElementById('pg-student').classList.add('active');
   initStudentDashboard();
@@ -660,6 +719,7 @@ function submitRequest(){
 function doAdminLogin(){
   const u = document.getElementById('l-user').value.trim(), p = document.getElementById('l-pass').value;
   if(u === CFG.admin.username && p === CFG.admin.password){
+    saveSession('admin', u);
     document.getElementById('pg-login').classList.remove('active');
     document.getElementById('pg-admin').classList.add('active');
     document.getElementById('adm-username').textContent = u;
@@ -668,6 +728,7 @@ function doAdminLogin(){
 }
 
 function doLogout(){
+  clearSession();
   loggedInStudent = null;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('pg-login').classList.add('active');
@@ -692,6 +753,24 @@ function initStudentDashboard(){
     document.getElementById(`my-s${i}v`).value = loggedInStudent.sems[i-1]?loggedInStudent.sems[i-1].v:0;
   });
   genMyPreview();
+}
+
+function liveUpdateMyStudent() {
+  if(!loggedInStudent) return;
+  const tempStu = JSON.parse(JSON.stringify(loggedInStudent));
+  tempStu.pay = document.getElementById('my-pay').value;
+  tempStu.paid = document.getElementById('my-paid').value;
+  tempStu.due = document.getElementById('my-due').value;
+  tempStu.oth = document.getElementById('my-oth').value;
+  tempStu.sems = [1,2,3].map(i => ({
+    n: document.getElementById(`my-s${i}n`).value,
+    v: parseFloat(document.getElementById(`my-s${i}v`).value)||0
+  }));
+  
+  const el = document.getElementById('my-portal-preview');
+  if(myPreviewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-student"><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span><span class="live-clock"></span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, tempStu)}</div></div>`;
+  else el.innerHTML = `<div class="pf" id="rt-student"><div class="pscr">${getMobileHTML(CFG, tempStu)}</div></div>`;
+  updateClock();
 }
 
 function saveMyStudentData(){
@@ -720,8 +799,9 @@ function setMyPM(m){
 
 function genMyPreview(){
   const el = document.getElementById('my-portal-preview');
-  if(myPreviewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-student"><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, loggedInStudent)}</div></div>`;
+  if(myPreviewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-student"><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span><span class="live-clock"></span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, loggedInStudent)}</div></div>`;
   else el.innerHTML = `<div class="pf" id="rt-student"><div class="pscr">${getMobileHTML(CFG, loggedInStudent)}</div></div>`;
+  updateClock();
 }
 
 /* ─────────────────────────────────────────────
@@ -733,7 +813,16 @@ function initAdmin(){
   document.getElementById('cfg-page-title').value=CFG.pageTitle; document.getElementById('cfg-page-sub').value=CFG.pageSub;
   document.getElementById('cfg-c1l').value=CFG.c1l; document.getElementById('cfg-c2l').value=CFG.c2l; document.getElementById('cfg-c3l').value=CFG.c3l; document.getElementById('cfg-c4l').value=CFG.c4l;
   if(CFG.logoSrc){ document.getElementById('logo-preview-img').src=CFG.logoSrc; document.getElementById('logo-preview-img').style.display='block'; document.getElementById('logo-placeholder').style.display='none'; }
+  
+  document.getElementById('cfg-announce').value = CFG.announce.text;
+  if(CFG.announce.active) document.getElementById('ann-toggle').classList.add('on');
+  
   renderNavEditor(); renderAdminStudentList(); genPreview(); updateAnalytics();
+}
+
+function toggleAnnouncement() {
+  const tg = document.getElementById('ann-toggle');
+  tg.classList.toggle('on');
 }
 
 function switchTab(tab){
@@ -769,6 +858,19 @@ function loadStudentEditor(id){
   [1,2,3].forEach(i => { document.getElementById(`se-s${i}n`).value = stu.sems[i-1]?stu.sems[i-1].n:''; document.getElementById(`se-s${i}v`).value = stu.sems[i-1]?stu.sems[i-1].v:0; });
   document.getElementById('se-approve-btn').style.display = (stu.status==='pending')?'block':'none';
   renderAdminStudentList();
+  liveUpdateAdminStudent();
+}
+
+function liveUpdateAdminStudent() {
+  const tempStu = JSON.parse(JSON.stringify(DEFAULT_STUDENT));
+  tempStu.name=document.getElementById('se-name').value || 'New Student'; 
+  tempStu.id=document.getElementById('se-id').value; 
+  tempStu.pay=document.getElementById('se-pay').value; tempStu.paid=document.getElementById('se-paid').value; 
+  tempStu.due=document.getElementById('se-due').value; tempStu.oth=document.getElementById('se-oth').value;
+  tempStu.sems=[1,2,3].map(i=>({n:document.getElementById(`se-s${i}n`).value, v:parseFloat(document.getElementById(`se-s${i}v`).value)||0}));
+  
+  // If we are looking at the student panel preview
+  // (In this layout, we don't have a live preview next to the student list, so this just prepares data if we add one later)
 }
 
 function createNewStudent(){
@@ -810,6 +912,10 @@ function applyAndGen(){
   CFG.year=document.getElementById('cfg-year').value; CFG.footer=document.getElementById('cfg-footer').value; CFG.url=document.getElementById('cfg-url').value;
   CFG.pageTitle=document.getElementById('cfg-page-title').value; CFG.pageSub=document.getElementById('cfg-page-sub').value;
   CFG.c1l=document.getElementById('cfg-c1l').value; CFG.c2l=document.getElementById('cfg-c2l').value; CFG.c3l=document.getElementById('cfg-c3l').value; CFG.c4l=document.getElementById('cfg-c4l').value;
+  
+  CFG.announce.active = document.getElementById('ann-toggle').classList.contains('on');
+  CFG.announce.text = document.getElementById('cfg-announce').value;
+
   CFG.nav=[]; document.querySelectorAll('.nav-item-row').forEach(r=>CFG.nav.push({label:r.querySelector('input').value, chevron:r.querySelector('.chev-toggle').classList.contains('on')}));
   saveCFG(); genPreview(); const t=document.getElementById('save-toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000);
 }
@@ -818,8 +924,9 @@ function setPM(m){ previewMode=m; document.getElementById('pmb-desk').classList.
 
 function genPreview(){
   const el=document.getElementById('portal-preview'); const d_stu = CFG.students[0] || DEFAULT_STUDENT; 
-  if(previewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-admin"><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, d_stu)}</div></div>`;
+  if(previewMode==='desktop') el.innerHTML = `<div class="bc" id="rt-admin"><div class="bc-toolbar"><span class="bc-url">🔒 ${escHtml(CFG.url)}</span><span class="live-clock"></span></div><div class="diu" style="height:550px;">${getDesktopHTML(CFG, d_stu)}</div></div>`;
   else el.innerHTML = `<div class="pf" id="rt-admin"><div class="pscr">${getMobileHTML(CFG, d_stu)}</div></div>`;
+  updateClock();
 }
 
 /* ─────────────────────────────────────────────
@@ -842,6 +949,9 @@ function getDesktopHTML(cfg, stu) {
     const h=Math.round(Math.min(1,s.v/4)*178);
     return `<div class="ch-col"><div class="ch-b" style="height:${h}px;background-color:${DC[i%DC.length]};"><span class="ch-bv">${s.v.toFixed(2)}</span></div><span class="ch-sl">${escHtml(s.n)}</span></div>`;
   }).join('');
+  
+  const announcementHTML = cfg.announce.active ? `<div class="glb-announce"><span class="badge">Notice</span><marquee scrollamount="5">${escHtml(cfg.announce.text)}</marquee></div>` : '';
+
   return `
     <div class="ds">
       <div class="ds-logo">${cfg.logoSrc?`<img src="${cfg.logoSrc}">`:`<svg width="48" height="48" viewBox="0 0 56 56" style="flex-shrink:0"><circle cx="28" cy="28" r="27" fill="#283593"/><circle cx="28" cy="28" r="22" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M20 16 L28 12 L36 16 L36 28 Q36 36 28 40 Q20 36 20 28 Z" fill="#3949ab" stroke="#fff" stroke-width="0.8"/><text x="28" y="26" text-anchor="middle" font-size="8" font-weight="bold" fill="#fff" font-family="Arial">DIU</text></svg>`}
@@ -850,26 +960,29 @@ function getDesktopHTML(cfg, stu) {
       <div class="ds-nav">${navHTML}</div>
     </div>
     <div class="dm">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-          <div><div class="dm-title" style="color:#111827;">${escHtml(cfg.pageTitle)}</div><div class="dm-sub" style="color:#6b7280;">${escHtml(cfg.pageSub)}</div></div>
-          <div style="text-align:right;">
-             <div style="font-size:0.85rem;font-weight:700;color:#111827;">${getGreeting()} ${escHtml(stu.name)}</div>
-             <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;">ID: ${escHtml(stu.id)}</div>
-          </div>
+      ${announcementHTML}
+      <div class="dm-content">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+            <div><div class="dm-title" style="color:#111827;">${escHtml(cfg.pageTitle)}</div><div class="dm-sub" style="color:#6b7280;">${escHtml(cfg.pageSub)}</div></div>
+            <div style="text-align:right;">
+               <div style="font-size:0.85rem;font-weight:700;color:#111827;">${getGreeting()} ${escHtml(stu.name)}</div>
+               <div style="font-size:0.75rem;color:#6b7280;margin-top:2px;">ID: ${escHtml(stu.id)}</div>
+            </div>
+        </div>
+        <div class="sc-grid">
+          <div class="sc"><div class="sc-h">${escHtml(cfg.c1l)}</div><div class="sc-v">${escHtml(stu.pay)}</div></div>
+          <div class="sc"><div class="sc-h">${escHtml(cfg.c2l)}</div><div class="sc-v">${escHtml(stu.paid)}</div></div>
+          <div class="sc"><div class="sc-h">${escHtml(cfg.c3l)}</div><div class="sc-v">${escHtml(stu.due)}</div></div>
+          <div class="sc"><div class="sc-h">${escHtml(cfg.c4l)}</div><div class="sc-v">${escHtml(stu.oth)}</div></div>
+        </div>
+        <div class="rt"><div class="rt-t" style="color:#111827;">📅 Today's Routine</div><div class="rt-e" style="color:#6b7280;">No routine available.</div></div>
+        <div class="ch-wrap">
+          <div class="ch-title" style="color:#111827;">Semester Wise Result</div>
+          <div class="ch-legend"><div class="ch-ls"></div><span style="color:#4b5563;">CGPA</span></div>
+          <div class="ch-body"><div class="ch-y"><span style="color:#6b7280;">4.0</span><span style="color:#6b7280;">3.0</span><span style="color:#6b7280;">2.0</span><span style="color:#6b7280;">1.0</span><span style="color:#6b7280;">0</span></div><div class="ch-bars">${barsHTML}</div></div>
+        </div>
+        <div class="dm-footer" style="color:#6b7280;">${escHtml(cfg.year)} © – <a style="color:#2563eb;" href="#">${escHtml(cfg.footer)}</a></div>
       </div>
-      <div class="sc-grid">
-        <div class="sc"><div class="sc-h">${escHtml(cfg.c1l)}</div><div class="sc-v">${escHtml(stu.pay)}</div></div>
-        <div class="sc"><div class="sc-h">${escHtml(cfg.c2l)}</div><div class="sc-v">${escHtml(stu.paid)}</div></div>
-        <div class="sc"><div class="sc-h">${escHtml(cfg.c3l)}</div><div class="sc-v">${escHtml(stu.due)}</div></div>
-        <div class="sc"><div class="sc-h">${escHtml(cfg.c4l)}</div><div class="sc-v">${escHtml(stu.oth)}</div></div>
-      </div>
-      <div class="rt"><div class="rt-t" style="color:#111827;">📅 Today's Routine</div><div class="rt-e" style="color:#6b7280;">No routine available.</div></div>
-      <div class="ch-wrap">
-        <div class="ch-title" style="color:#111827;">Semester Wise Result</div>
-        <div class="ch-legend"><div class="ch-ls"></div><span style="color:#4b5563;">CGPA</span></div>
-        <div class="ch-body"><div class="ch-y"><span style="color:#6b7280;">4.0</span><span style="color:#6b7280;">3.0</span><span style="color:#6b7280;">2.0</span><span style="color:#6b7280;">1.0</span><span style="color:#6b7280;">0</span></div><div class="ch-bars">${barsHTML}</div></div>
-      </div>
-      <div class="dm-footer" style="color:#6b7280;">${escHtml(cfg.year)} © – <a style="color:#2563eb;" href="#">${escHtml(cfg.footer)}</a></div>
     </div>
   `;
 }
@@ -879,11 +992,15 @@ function getMobileHTML(cfg, stu) {
     const h=Math.round(Math.min(1,s.v/4)*145);
     return `<div class="mch-col"><div class="mch-b" style="height:${h}px;background-color:${MC[i%MC.length]};"><span class="mch-bv">${s.v.toFixed(2)}</span></div><span class="mch-sl">${escHtml(s.n)}</span></div>`;
   }).join('');
+  
+  const announcementHTML = cfg.announce.active ? `<div class="glb-announce" style="font-size:0.7rem; padding:6px 12px;"><span class="badge">Notice</span><marquee scrollamount="4">${escHtml(cfg.announce.text)}</marquee></div>` : '';
+
   return `
     <div style="height:44px; background-color:#fff; display:flex; justify-content:space-between; align-items:flex-end; padding:0 24px 10px; font-size:0.8rem; font-weight:700; color:#000; flex-shrink:0;">
-      <span>9:41</span>
-      <span style="font-size:0.7rem; letter-spacing:2px;">4G ᯤ</span>
+      <span class="live-clock">9:41</span>
+      <span style="font-size:0.7rem; letter-spacing:2px;">5G 🔋</span>
     </div>
+    ${announcementHTML}
     <div class="ptb"><span class="p-ham">☰</span><div class="p-usr"><div class="p-un" style="color:#111827;">${escHtml(stu.name)}</div><div class="p-ui" style="color:#6b7280;">${escHtml(stu.id)}</div></div></div>
     <div class="pb">
       <div class="pb-t" style="color:#111827;">${escHtml(cfg.pageTitle)}</div>
@@ -926,7 +1043,10 @@ async function downloadScreenshot(targetId){
   }
 }
 
-window.onload = function(){ loadCFG(); };
+window.onload = function(){ 
+  loadCFG(); 
+  checkSession();
+};
 </script>
 </body>
 </html>
