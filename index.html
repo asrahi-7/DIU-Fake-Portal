@@ -112,6 +112,8 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .adm-ni{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:0.8rem;color:#666;cursor:pointer;transition:all 0.15s;margin-bottom:2px;}
 .adm-ni:hover{background:#1a1a2e;color:#aaa;}
 .adm-ni.act{background:#1e2a5e;color:#7a9cf7;font-weight:600;}
+.adm-ni svg{flex-shrink:0;opacity:0.7;}
+.adm-ni.act svg{opacity:1;}
 .adm-user{padding:14px 16px;border-top:1px solid #1a1a30;display:flex;align-items:center;gap:10px;}
 .adm-avatar{width:32px;height:32px;background:#1e2a5e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .adm-uinfo{flex:1;}
@@ -209,7 +211,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 .mt-btn.act{color:#4a6cf7;border-bottom-color:#4a6cf7;}
 
 /* ══════════════════════════════════════════
-   PANIC MODE BUTTON  ← THE STAR OF THE SHOW
+   PANIC MODE BUTTON 
 ══════════════════════════════════════════ */
 .panik-btn-wrap{
   margin-top:20px;
@@ -375,7 +377,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
 </head>
 <body>
 
-<!-- ══════════════ HOME PAGE ══════════════ -->
 <div id="pg-home" class="page active">
   <header class="site-header">
     <a class="site-logo" onclick="routeTo('pg-home')">
@@ -431,7 +432,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
   <footer class="site-footer">2026 © AuraGrade. For educational & mockup purposes only. Not affiliated with any real university.</footer>
 </div>
 
-<!-- ══════════════ LOGIN PAGE ══════════════ -->
 <div id="pg-login" class="page">
   <div class="login-box">
     <div class="login-logo" onclick="routeTo('pg-home')">
@@ -448,7 +448,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     <p id="login-subtext">Enter your student ID and password.</p>
     <div class="login-msg" id="login-msg"></div>
 
-    <!-- STUDENT LOGIN -->
     <div id="form-student">
       <div class="lf-group"><label>STUDENT ID</label><input type="text" id="l-sid" placeholder="e.g. XXX-XX-XXX"></div>
       <div class="lf-group"><label>PASSWORD</label><input type="password" id="l-spass" placeholder="••••••••"></div>
@@ -456,7 +455,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <button class="btn-text" onclick="toggleRequestMode()" id="req-btn">New User? Request Access</button>
     </div>
 
-    <!-- REQUEST ACCESS -->
     <div id="form-request" style="display:none">
       <div class="lf-group"><label>FULL NAME</label><input type="text" id="r-name" placeholder="John Doe"></div>
       <div class="lf-group"><label>STUDENT ID</label><input type="text" id="r-sid" placeholder="XXX-XX-XXX"></div>
@@ -465,7 +463,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <button class="btn-text" onclick="toggleRequestMode()">← Back to Login</button>
     </div>
 
-    <!-- ADMIN LOGIN -->
     <div id="form-admin" style="display:none">
       <div class="lf-group"><label>USERNAME</label><input type="text" id="l-user" placeholder="admin"></div>
       <div class="lf-group"><label>PASSWORD</label><input type="password" id="l-pass" placeholder="••••••••"></div>
@@ -474,18 +471,14 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
   </div>
 </div>
 
-<!-- ══════════════ STUDENT DASHBOARD ══════════════ -->
 <div id="pg-student" class="page">
-  <!-- Mobile tabs -->
   <div class="mob-tab-nav">
     <button class="mt-btn act" id="mt-edit" onclick="switchMobileTab('edit')">✏️ Edit Data</button>
     <button class="mt-btn" id="mt-preview" onclick="switchMobileTab('preview')">👁️ View Portal</button>
   </div>
 
-  <!-- ══ STUDENT EDIT PANE ══ -->
   <div class="settings-form stu-edit-pane" id="stu-edit-pane" style="width:420px;min-width:420px;">
 
-    <!-- Header -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
       <div>
         <h2 style="font-size:1.1rem;color:#fff;" id="my-name-disp">Welcome</h2>
@@ -494,7 +487,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       <button onclick="doLogout()" style="background:#1e1e35;border:none;border-radius:8px;padding:7px 14px;color:#aaa;font-size:0.78rem;cursor:pointer;font-family:inherit;">Logout ⎋</button>
     </div>
 
-    <!-- Financial Data -->
     <div class="sf-section">
       <div class="sf-title">💰 Financial Data</div>
       <div class="r2">
@@ -507,20 +499,17 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       </div>
     </div>
 
-    <!-- Semester CGPA -->
     <div class="sf-section">
       <div class="sf-title">📊 Semester CGPA Chart</div>
       <div id="my-sems-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;"></div>
       <button class="btn-secondary" style="width:100%;justify-content:center;font-size:0.75rem;padding:7px;" onclick="addMySem()">+ Add Semester</button>
     </div>
 
-    <!-- Save button -->
     <button class="btn-primary" style="width:100%;justify-content:center;font-size:0.9rem;padding:12px;" onclick="saveMyData()">
       💾 Save to Cloud
     </button>
     <div class="save-toast" id="my-toast" style="justify-content:center;margin-top:8px;">✓ Saved successfully!</div>
 
-    <!-- ══ 🚨 PANIC MODE BUTTON ══ -->
     <div class="panik-btn-wrap">
       <div class="panik-btn-label">🚨 Panic Mode</div>
       <div class="panik-btn-desc">
@@ -535,10 +524,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       </div>
     </div>
 
-  </div><!-- /stu-edit-pane -->
-
-  <!-- ══ STUDENT PREVIEW PANE ══ -->
-  <div class="adm-content stu-preview-pane" id="stu-preview-pane">
+  </div><div class="adm-content stu-preview-pane" id="stu-preview-pane">
     <div class="dl-bar">
       <div class="pmb-bar">
         <button class="pmb-btn on" id="my-pmb-d" onclick="setMyPM('desktop')">🖥 Desktop</button>
@@ -553,12 +539,8 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     </div>
   </div>
 
-</div><!-- /pg-student -->
+</div><div id="pg-admin" class="page">
 
-<!-- ══════════════ ADMIN DASHBOARD ══════════════ -->
-<div id="pg-admin" class="page">
-
-  <!-- Admin Sidebar -->
   <div class="adm-sidebar">
     <div class="adm-brand" onclick="routeTo('pg-home')">
       <div class="adm-brand-icon">
@@ -581,7 +563,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
     </div>
   </div>
 
-  <!-- Admin Content -->
   <div class="adm-content">
     <div class="adm-topbar">
       <div><h1 id="adm-page-title">Portal Interface</h1><p id="adm-page-sub">Customize logo, branding, navigation, and Panic Mode URL</p></div>
@@ -591,11 +572,9 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       </div>
     </div>
 
-    <!-- ═══ PANEL: PORTAL ═══ -->
     <div id="panel-portal" class="adm-panel act">
       <div class="settings-form">
 
-        <!-- PANIC MODE URL — TOP of settings for visibility -->
         <div class="sf-section">
           <div class="sf-title" style="color:#f87171;">🚨 Panic Mode URL</div>
           <div style="background:#1a0808;border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:14px;margin-bottom:4px;">
@@ -614,7 +593,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           </div>
         </div>
 
-        <!-- ANNOUNCEMENT BANNER -->
         <div class="sf-section">
           <div class="sf-title">📢 Global Announcement</div>
           <div class="toggle-wrap">
@@ -624,7 +602,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           <div class="sf-field"><label>Announcement Text</label><textarea id="cfg-announce" rows="2" placeholder="Announcement text..."></textarea></div>
         </div>
 
-        <!-- LOGO -->
         <div class="sf-section">
           <div class="sf-title">🖼️ University Logo</div>
           <div class="logo-upload-area" onclick="document.getElementById('logo-file').click()">
@@ -639,7 +616,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           <div class="sf-field"><label>Line 3 (bold blue)</label><input type="text" id="cfg-uni3"></div>
         </div>
 
-        <!-- BRANDING -->
         <div class="sf-section">
           <div class="sf-title">🏷️ Branding</div>
           <div class="r2">
@@ -653,14 +629,12 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           </div>
         </div>
 
-        <!-- NAV ITEMS -->
         <div class="sf-section">
           <div class="sf-title">☰ Sidebar Navigation Items</div>
           <div class="nav-editor" id="nav-editor"></div>
           <button class="btn-add-nav" onclick="addNavItem()">+ Add menu item</button>
         </div>
 
-        <!-- STAT CARD LABELS -->
         <div class="sf-section">
           <div class="sf-title">💳 Stat Card Labels</div>
           <div class="r2">
@@ -673,10 +647,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           </div>
         </div>
 
-      </div><!-- /settings-form -->
-
-      <!-- Preview -->
-      <div class="preview-area">
+      </div><div class="preview-area">
         <div class="pmb-bar">
           <button class="pmb-btn on" id="pmb-d" onclick="setAdminPM('desktop')">🖥 Desktop</button>
           <button class="pmb-btn" id="pmb-m" onclick="setAdminPM('mobile')">📱 Mobile</button>
@@ -685,10 +656,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
           <div id="portal-preview"></div>
         </div>
       </div>
-    </div><!-- /panel-portal -->
-
-    <!-- ═══ PANEL: STUDENTS ═══ -->
-    <div id="panel-students" class="adm-panel">
+    </div><div id="panel-students" class="adm-panel">
       <div class="sl-pane">
         <div class="sl-search">
           <input type="text" id="stu-search" placeholder="Search by name or ID..." oninput="renderStudentList()">
@@ -735,10 +703,7 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
         <div style="font-size:48px;margin-bottom:12px;">👤</div>
         <p style="font-size:0.88rem;">Select a student to edit</p>
       </div>
-    </div><!-- /panel-students -->
-
-    <!-- ═══ PANEL: ANALYTICS ═══ -->
-    <div id="panel-analytics" class="adm-panel" style="padding:24px;flex-direction:column;gap:20px;">
+    </div><div id="panel-analytics" class="adm-panel" style="padding:24px;flex-direction:column;gap:20px;">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;">
         <div style="background:#12121f;border:1px solid #1e1e35;border-radius:12px;padding:20px;">
           <div style="font-size:0.7rem;color:#555;font-weight:600;text-transform:uppercase;">Total Students</div>
@@ -755,7 +720,6 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       </div>
     </div>
 
-    <!-- ═══ PANEL: SETTINGS ═══ -->
     <div id="panel-settings" class="adm-panel" style="padding:24px;flex-direction:column;">
       <div style="max-width:480px;">
         <div class="sf-section">
@@ -769,16 +733,12 @@ body{font-family:'Inter','Segoe UI',sans-serif;background:#0d0d1a;color:#e0e0e0;
       </div>
     </div>
 
-    <!-- Download bar -->
     <div class="dl-bar" id="adm-dl-bar">
       <button class="btn-primary" onclick="downloadShot('rt-admin')">⬇️ Download PNG</button>
       <div class="save-toast" id="adm-save-toast" style="margin-left:8px;">✓ Changes Applied</div>
     </div>
 
-  </div><!-- /adm-content -->
-</div><!-- /pg-admin -->
-
-<script>
+  </div></div><script>
 /* ════════════════════════════════════════════
    FIREBASE CONFIG — Replace with your own!
 ════════════════════════════════════════════ */
@@ -846,17 +806,42 @@ window.addEventListener('popstate',e=>{
 });
 
 /* ════════════════════════════════════════════
-   FIREBASE SYNC
+   FIREBASE SYNC & LIFETIME LOCAL BACKUP
 ════════════════════════════════════════════ */
-function saveCFG(){ db.collection('portalData').doc('main').set(CFG).catch(e=>console.error(e)); }
+function saveCFG(){ 
+  // Lifetime Backup: Always save locally first just in case Firebase fails.
+  localStorage.setItem('ag_db_backup', JSON.stringify(CFG));
+  db.collection('portalData').doc('main').set(CFG).catch(e=>console.error("Firebase Save Error:", e)); 
+}
 
 function initSync(){
   db.collection('portalData').doc('main').onSnapshot(doc=>{
-    if(doc.exists) CFG = Object.assign({},CFG,doc.data());
-    else saveCFG();
+    if(doc.exists) {
+      CFG = doc.data();
+      // Keep local backup fresh
+      localStorage.setItem('ag_db_backup', JSON.stringify(CFG));
+    } else {
+      saveCFG();
+    }
+
     if(isFirstLoad){ isFirstLoad=false; checkSession(); }
     else { refreshSession(); }
-  }, err=>{ console.error(err); checkSession(); });
+
+  }, err=>{ 
+    console.error("Firebase connection error (Rules likely expired):", err); 
+    
+    // LIFETIME FIX: If Firebase fails, load from local backup instead of resetting!
+    const backup = localStorage.getItem('ag_db_backup');
+    if(backup) {
+      CFG = JSON.parse(backup);
+      console.log("Loaded safely from local backup.");
+    } else {
+      alert("Database connection failed and no backup found. Please check your Firebase Security Rules (Test Mode may have expired).");
+    }
+
+    if(isFirstLoad){ isFirstLoad=false; checkSession(); }
+    else { refreshSession(); }
+  });
 }
 
 function saveSession(type, id){ localStorage.setItem('ag_sess',JSON.stringify({type,id})); }
